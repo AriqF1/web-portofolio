@@ -29,12 +29,6 @@ const Navbar = () => {
             >
               Projects
             </Link>
-            <Link
-              href="#contact"
-              className="text-gray-700 hover:text-indigo-600 transition"
-            >
-              Contact
-            </Link>
             <a
               href="/resume.pdf"
               className="px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 transition"

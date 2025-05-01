@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Github, Linkedin, Twitter, Mail, Heart, ArrowUp } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, ArrowUp } from "lucide-react";
 
 // Interface untuk props (jika diperlukan di masa depan)
 interface FooterProps {
@@ -68,19 +68,7 @@ const Footer: React.FC<FooterProps> = ({ customClass = "" }) => {
       ariaLabel: "Send Email",
     },
   ];
-
-  // Data untuk navigasi
-  const navigationLinks: Array<{
-    name: string;
-    path: string;
-  }> = [
-    { name: "Beranda", path: "/" },
-    { name: "Proyek", path: "/projects" },
-    { name: "Tentang Saya", path: "/about" },
-    { name: "Keahlian", path: "/skills" },
-    { name: "Kontak", path: "/contact" },
-  ];
-
+  
   return (
     <footer className={`bg-gray-900 text-white ${customClass}`}>
       <div className="max-w-6xl mx-auto px-4 py-10">
