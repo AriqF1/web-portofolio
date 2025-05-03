@@ -5,8 +5,6 @@ import { ExternalLink, Github, Eye, Info, X } from "lucide-react";
 import ProjectDetail from "./ProjectDetail";
 import { projects, Project } from "../data/projects";
 
-
-
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [animateCards, setAnimateCards] = useState(false);
@@ -14,14 +12,21 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  
-
-  const filters = ["all", "Next.js", "React", "TypeScript", "Tailwind CSS", "Firebase"];
+  const filters = [
+    "all",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Firebase",
+  ];
 
   const filteredProjects =
     activeFilter === "all"
       ? projects
-      : projects.filter((project: Project) => project.tags.includes(activeFilter));
+      : projects.filter((project: Project) =>
+          project.tags.includes(activeFilter)
+        );
 
   useEffect(() => {
     // Simulate loading state
@@ -29,10 +34,10 @@ const Projects = () => {
       setIsLoading(false);
       setAnimateCards(true);
     }, 500);
-    
+
     return () => clearTimeout(timer);
   }, []);
-  
+
   // Reset animation state when filter changes
   useEffect(() => {
     setAnimateCards(false);
@@ -53,7 +58,10 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-gray-100">
+    <section
+      id="projects"
+      className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-gray-100"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
@@ -90,7 +98,10 @@ const Projects = () => {
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-white rounded-xl overflow-hidden shadow-md h-96 animate-pulse">
+              <div
+                key={i}
+                className="bg-white rounded-xl overflow-hidden shadow-md h-96 animate-pulse"
+              >
                 <div className="h-48 bg-gray-300"></div>
                 <div className="p-6">
                   <div className="h-6 bg-gray-300 rounded mb-4 w-3/4"></div>
@@ -98,7 +109,10 @@ const Projects = () => {
                   <div className="h-4 bg-gray-200 rounded mb-4 w-5/6"></div>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {[1, 2, 3].map((j) => (
-                      <div key={j} className="h-6 bg-gray-200 rounded-full w-16"></div>
+                      <div
+                        key={j}
+                        className="h-6 bg-gray-200 rounded-full w-16"
+                      ></div>
                     ))}
                   </div>
                 </div>
@@ -107,11 +121,13 @@ const Projects = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {filteredProjects.map((project:Project, index: number) => (
+            {filteredProjects.map((project: Project, index: number) => (
               <div
                 key={project.id}
                 className={`bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 transform ${
-                  animateCards ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  animateCards
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8"
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
@@ -121,6 +137,7 @@ const Projects = () => {
                     alt={project.title}
                     layout="fill"
                     objectFit="cover"
+                    priority
                     className="transition-opacity duration-300 group-hover:opacity-90"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
