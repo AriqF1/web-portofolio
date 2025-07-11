@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-300">
       <Head>
-        <title>Ariq Farhan | Portfolio</title> {/* Enhanced Title */}
+        <title>Ariq Farhan | Portfolio</title>
         <meta
           name="description"
           content="Ariq Farhan's personal portfolio showcasing web development, data engineering, and UI/UX design projects."
