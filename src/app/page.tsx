@@ -8,10 +8,13 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-neutral-950 text-neutral-300">
       <Head>
-        <title>My Portfolio</title>
-        <meta name="description" content="My personal portfolio website" />
+        <title>Ariq Farhan | Portfolio</title> {/* Enhanced Title */}
+        <meta
+          name="description"
+          content="Ariq Farhan's personal portfolio showcasing web development, data engineering, and UI/UX design projects."
+        />{" "}
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
