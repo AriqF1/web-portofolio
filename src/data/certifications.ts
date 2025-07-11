@@ -12,8 +12,8 @@ export const certifications: Certification[] = [
     name: "Complete Web Development Bootcamp",
     issuer: "Udemy (Angela Yu)",
     date: "Januari 2023",
-    url: "https://www.udemy.com/certificate/UC-...", // Ganti dengan URL sertifikasi Anda
-    icon: "Code", // Contoh: Menggunakan nama ikon Lucide
+    url: "https://www.udemy.com/certificate/UC-...",
+    icon: "Code",
     description:
       "Mastered full-stack development with a focus on web fundamentals, Node.js, Express, React, and MongoDB.",
   },
@@ -44,7 +44,6 @@ export const certifications: Certification[] = [
     description:
       "Demonstrated foundational knowledge of AWS cloud concepts, services, security, and economics.",
   },
-  // Tambahkan sertifikasi lainnya di sini
   {
     name: "Google IT Support Professional Certificate",
     issuer: "Coursera (Google)",
