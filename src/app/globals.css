@@ -30,3 +30,46 @@ body {
     animation: spin 8s linear infinite;
   }
 }
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 1s ease-out forwards;
+}
+
+@keyframes spin-slow-reverse {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-spin-slow-reverse {
+  animation: spin-slow-reverse 20s linear infinite;
+}
