@@ -1,16 +1,14 @@
 "use client";
-import { useState, useEffect } from "react"; // Added useEffect for potential future scroll effects
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false); // State to track scroll for background change
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
-  // Effect to change navbar background on scroll
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
-        // Adjust scroll threshold as needed
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
