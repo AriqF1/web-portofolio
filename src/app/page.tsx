@@ -1,10 +1,9 @@
 import { useState } from "react";
 import Head from "next/head";
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-//import Footer from "../components/Footer";
-import About from "../components/About";
-import Projects from "../components/Projects";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
 
 export default function Home() {
