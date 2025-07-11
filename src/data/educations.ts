@@ -14,21 +14,21 @@ export const education = [
     description:
       "Specialized in Web Technologies and Information Systems, focusing on practical application and innovative solutions.",
     achievements: [
-      "Consistently maintained a high GPA (e.g., 3.8/4.0)", // Example achievement
-      "Final year project: Developed a secure and scalable learning management system",
-      "Active member and lead organizer for various tech workshops in the Computer Science Society",
+      "Consistently maintained a high GPA of 3.6+ every semester (currently 3.7/4.0)",
+      "Final year project: Developed a secure and scalable polyclinic system using Laravel and Filament",
+      "Actively engaged in web development projects and collaborative learning environments",
     ],
   },
   {
     degree: "Science High School Diploma",
     institution: "SMA Mardisiswa Semarang",
-    period: "2018",
+    period: "2019 - 2022",
     description:
       "Completed a comprehensive science program, building a strong foundation in analytical thinking and problem-solving.",
     achievements: [
-      "Graduated with honors, demonstrating academic excellence",
-      "Participated in science olympiads, securing regional recognition",
-      "Led a student-led initiative for a school-wide recycling program",
+      "Actively participated in class discussions and group projects to enhance collaborative learning",
+      "Consistently maintained strong performance in science and mathematics subjects",
+      "Served as a reliable team member in school events and extracurricular activities",
     ],
   },
 ];
