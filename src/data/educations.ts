@@ -14,7 +14,7 @@ export const education = [
     description:
       "Specialized in Web Technologies and Information Systems, focusing on practical application and innovative solutions.",
     achievements: [
-      "Consistently maintained a high GPA of 3.6+ every semester (currently 3.7/4.0)",
+      "Consistently maintained a high GPA of 3.6+ every semester (currently 3.76/4.00)",
       "Final year project: Developed a secure and scalable polyclinic system using Laravel and Filament",
       "Actively engaged in web development projects and collaborative learning environments",
     ],
