@@ -67,7 +67,7 @@ const Footer: React.FC<FooterProps> = ({ customClass = "" }) => {
   return (
     <footer
       id="contact"
-      className={`${customClass} py-16 md:py-20 relative overflow-hidden`}
+      className={`${customClass} py-8 md:py-10 relative overflow-hidden`}
       style={{
         backgroundColor: getVar("card-bg"),
         color: getVar("foreground"),
@@ -211,7 +211,6 @@ const Footer: React.FC<FooterProps> = ({ customClass = "" }) => {
               >
                 📍
               </span>{" "}
-              {/* Purple accent */}
               Semarang City, Central Java, Indonesia
             </p>
             <p
@@ -230,7 +229,7 @@ const Footer: React.FC<FooterProps> = ({ customClass = "" }) => {
             <div className="mt-6 animate-fadeIn delay-600">
               <a
                 href="mailto:farhanariq.dev@gmail.com"
-                className="inline-flex items-center px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-base md:text-lg transform hover:scale-105"
+                className="inline-flex items-center px-8 py-3 rounded shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-base md:text-lg transform hover:scale-105"
                 style={{
                   background: getVar("button-primary-bg"),
                   color: "white",

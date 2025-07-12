@@ -57,21 +57,21 @@ const Navbar = () => {
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-8">
             <Link
-              href="#about"
+              href="/#about"
               className={`transition-colors duration-200 text-lg font-medium hover:opacity-80`}
               style={{ color: getVar("text-primary") }}
             >
               About
             </Link>
             <Link
-              href="#projects"
+              href="/#projects"
               className={`transition-colors duration-200 text-lg font-medium hover:opacity-80`}
               style={{ color: getVar("text-primary") }}
             >
               Projects
             </Link>
             <Link
-              href="#contact"
+              href="/#contact"
               className={`transition-colors duration-200 text-lg font-medium hover:opacity-80`}
               style={{ color: getVar("text-primary") }}
             >
@@ -175,7 +175,7 @@ const Navbar = () => {
         >
           <div className="px-2 pt-2 space-y-1 sm:px-3">
             <Link
-              href="#about"
+              href="/#about"
               className={`block px-3 py-2 rounded-md transition-colors duration-200 text-base font-medium hover:opacity-80`}
               style={{
                 color: getVar("text-primary"),
@@ -186,7 +186,7 @@ const Navbar = () => {
               About
             </Link>
             <Link
-              href="#projects"
+              href="/#projects"
               className={`block px-3 py-2 rounded-md transition-colors duration-200 text-base font-medium hover:opacity-80`}
               style={{
                 color: getVar("text-primary"),
@@ -197,7 +197,7 @@ const Navbar = () => {
               Projects
             </Link>
             <Link
-              href="#contact"
+              href="/#contact"
               className={`block px-3 py-2 rounded-md transition-colors duration-200 text-base font-medium hover:opacity-80`}
               style={{
                 color: getVar("text-primary"),
