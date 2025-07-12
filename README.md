@@ -1,7 +1,7 @@
 # 🌐 Portfolio Website
 
-**Portfolio Website** is a personal web application developed using **Next.js** as part of a university learning project.  
-It is designed to showcase personal information, skills, projects, and certifications in a clean, structured, and interactive layout.  
+**Portfolio Website** is a personal web application, developed using **Next.js**.  
+It is designed to showcase my personal information, skills, projects, and certifications in a clean, structured, and interactive layout.  
 The primary goal is to present a professional online presence and make it easier for recruiters or visitors to explore the developer's profile.
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/AriqF1/web-belajar/actions) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
