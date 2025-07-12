@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 Portfolio Website
 
-## Getting Started
+**Portfolio Website** is a personal web application developed using **Next.js** as part of a university learning project.  
+It is designed to showcase personal information, skills, projects, and certifications in a clean, structured, and interactive layout.  
+The primary goal is to present a professional online presence and make it easier for recruiters or visitors to explore the developer's profile.
 
-First, run the development server:
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/AriqF1/web-belajar/actions) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎯 Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Hero Section**  
+  A brief introduction with a personal tagline that reflects the user's professional identity.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **About Me (Skills & Education)**  
+  Displays educational background and technical skills, categorized into Frontend, Backend, Tools, and Design.
 
-## Learn More
+- **Projects List**  
+  An interactive gallery showcasing completed projects, including descriptions, used technologies, and links to GitHub or live demos.
 
-To learn more about Next.js, take a look at the following resources:
+- **Certifications (Courses & Webinars)**  
+  Lists relevant course and webinar certificates that reflect additional competencies and continuous learning.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Responsive Design**  
+  Fully responsive layout optimized for various screen sizes including desktop, tablet, and mobile devices.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🛠️ Built With
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Next.js** — A React-based framework for building fast and SEO-friendly web applications.
+- **Tailwind CSS** — A utility-first CSS framework for efficient and consistent styling.
+- **TypeScript** — Adds type safety and enhances maintainability.
+- **GitHub Actions** — Automates CI/CD workflows and triggers build & deployment processes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🚀 Deployment
+
+The project is deployed using [Vercel](https://vercel.com), a modern platform for frontend frameworks.  
+Every push to the production branch triggers an automatic build and deployment process through GitHub integration.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+---
+
+## 🤝 Contact
+
+Feel free to reach out for collaborations or feedback:
+
+- GitHub: [AriqF1](https://github.com/AriqF1)
+- LinkedIn: https://linkedin.com/in/ariqfarhan-dev
