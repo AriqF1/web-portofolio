@@ -14,11 +14,14 @@ import {
   BookText,
   Ribbon,
   Briefcase,
-  ChevronLeft, // Ikon untuk paginasi
-  ChevronRight, // Ikon untuk paginasi
+  ChevronLeft,
+  ChevronRight,
+  Volleyball,
+  Award as AwardIcon,
+  MonitorPlay,
 } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 
-// Helper function untuk mendapatkan komponen ikon
 const getIconComponent = (iconName: string) => {
   switch (iconName) {
     case "Code":
@@ -37,38 +40,50 @@ const getIconComponent = (iconName: string) => {
       return <Ribbon size={32} />;
     case "Briefcase":
       return <Briefcase size={32} />;
+    case "Volleyball":
+      return <Volleyball size={32} />;
+    case "MonitorPlay":
+      return <MonitorPlay size={32} />;
     default:
-      return <Award size={32} />;
+      return <AwardIcon size={32} />;
   }
 };
 
 const Certifications = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<"course" | "webinar">(
+    "course"
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
 
-  const totalPages = Math.ceil(certifications.length / itemsPerPage);
+  const { theme } = useTheme();
+
+  const filteredItems = certifications.filter(
+    (cert) => cert.category === activeCategory
+  );
+
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = certifications.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
 
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    document
+      .getElementById("certifications")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   const nextPage = () => {
     if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-      document
-        .getElementById("certifications")
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      paginate(currentPage + 1);
     }
   };
 
   const prevPage = () => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-      document
-        .getElementById("certifications")
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      paginate(currentPage - 1);
     }
   };
 
@@ -99,12 +114,21 @@ const Certifications = () => {
     };
   }, []);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeCategory]);
+
+  const getVar = (varName: string) => `var(--${varName})`;
+
   return (
     <section
       id="certifications"
-      className="py-16 md:py-24 bg-neutral-950 text-neutral-300 relative overflow-hidden"
+      className="py-16 md:py-24 relative overflow-hidden"
+      style={{
+        backgroundColor: getVar("background"),
+        color: getVar("foreground"),
+      }}
     >
-      {/* Background Gradients/Blobs */}
       <div className="absolute inset-0 z-0 opacity-20">
         <div className="absolute bottom-1/3 -right-1/4 w-80 h-80 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2500"></div>
         <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-indigo-700 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4500"></div>
@@ -116,20 +140,88 @@ const Certifications = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <span className="inline-block px-3 py-1 bg-gradient-to-r from-purple-700 to-blue-800 text-neutral-400 rounded-full text-sm font-medium mb-4 border border-neutral-700 shadow-md">
+          <span
+            className="inline-block px-3 py-1 rounded-full text-sm font-medium mb-4 border shadow-md"
+            style={{
+              background: getVar("button-primary-bg"),
+              borderColor: getVar("border-divider"),
+              color: "white",
+            }}
+          >
             🏅 My Certifications
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight">
+          <h2
+            className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight"
+            style={{ color: getVar("text-primary") }}
+          >
             Knowledge Backed By{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-blue-500">
+            <span
+              className="text-transparent bg-clip-text"
+              style={{ color: getVar("button-primary-bg") }}
+            >
               Credentials
             </span>
           </h2>
-          <p className="mt-4 text-lg text-neutral-400 max-w-2xl mx-auto">
+          <p
+            className="mt-4 text-lg max-w-2xl mx-auto"
+            style={{ color: getVar("text-secondary") }}
+          >
             A selection of my professional certifications and completed courses,
             showcasing my continuous learning and expertise.
           </p>
-          <div className="mt-6 h-1.5 w-32 bg-gradient-to-r from-purple-300 to-blue-500 mx-auto rounded-full"></div>
+          <div
+            className="mt-6 h-1.5 w-32 mx-auto rounded-full"
+            style={{ background: getVar("button-primary-bg") }}
+          ></div>
+        </div>
+
+        {/* Tab Navigation for Categories */}
+        <div className="mb-8 items-center justify-center flex space-x-4">
+          <div
+            className="flex p-1 rounded-xl mb-8 shadow-xl border max-w-full lg:max-w-xl mx-auto lg:mx-0"
+            style={{
+              backgroundColor: getVar("card-border"),
+              borderColor: getVar("border-divider"),
+            }}
+          >
+            <button
+              className={`py-3 px-6 rounded-lg font-semibold text-base flex items-center justify-center flex-1 transition-all duration-300 transform hover:scale-105 cursor-pointer ${
+                activeCategory === "course" ? "shadow-lg" : ""
+              }`}
+              style={{
+                background:
+                  activeCategory === "course"
+                    ? getVar("button-primary-bg")
+                    : "transparent",
+                color:
+                  activeCategory === "course"
+                    ? "white"
+                    : getVar("text-secondary"),
+              }}
+              onClick={() => setActiveCategory("course")}
+            >
+              <AwardIcon size={18} className="mr-2" />
+              Certifications
+            </button>
+            <button
+              className={`py-3 px-6 rounded-lg font-semibold text-base flex items-center justify-center flex-1 transition-all duration-300 transform hover:scale-105 cursor-pointer ${
+                activeCategory === "webinar" ? "shadow-lg" : ""
+              }`}
+              style={{
+                background:
+                  activeCategory === "webinar"
+                    ? getVar("button-primary-bg")
+                    : "transparent",
+                color:
+                  activeCategory === "webinar"
+                    ? "white"
+                    : getVar("text-secondary"),
+              }}
+              onClick={() => setActiveCategory("webinar")}
+            >
+              <MonitorPlay size={18} className="mr-2" /> Webinars
+            </button>
+          </div>
         </div>
 
         {/* Certifications Grid */}
@@ -138,68 +230,121 @@ const Certifications = () => {
             isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         >
-          {currentItems.map((cert: Certification, index) => (
-            <div
-              key={index}
-              className="bg-neutral-800 rounded-2xl p-7 shadow-2xl border border-neutral-700 transform hover:translate-y-[-8px] transition-all duration-300 group relative overflow-hidden flex flex-col"
-            >
-              <div className="absolute inset-0 z-0 bg-dot-pattern opacity-[0.03] pointer-events-none"></div>
+          {currentItems.length > 0 ? (
+            currentItems.map((cert: Certification, index) => (
+              <div
+                key={index}
+                className="rounded-2xl p-7 shadow-2xl border transform hover:translate-y-[-8px] transition-all duration-300 group relative overflow-hidden flex flex-col"
+                style={{
+                  backgroundColor: getVar("card-bg"),
+                  borderColor: getVar("border-divider"),
+                }}
+              >
+                <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"></div>
 
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-blue-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl z-0"></div>
+                {/* Hover overlay for the card */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl z-0"
+                  style={{ background: getVar("button-primary-bg") }}
+                ></div>
 
-              <div className="relative z-10 flex flex-col h-full">
-                <div className="flex items-center mb-5">
-                  <div className="p-3.5 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full text-white mr-4 shadow-lg flex-shrink-0 transform group-hover:scale-110 transition-transform duration-300">
-                    {cert.icon ? (
-                      getIconComponent(cert.icon)
-                    ) : (
-                      <Award size={32} />
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex items-center mb-5">
+                    <div
+                      className="p-3.5 rounded-full text-white mr-4 shadow-lg flex-shrink-0 transform group-hover:scale-110 transition-transform duration-300"
+                      style={{ background: getVar("button-primary-bg") }}
+                    >
+                      {cert.icon ? (
+                        getIconComponent(cert.icon)
+                      ) : (
+                        <AwardIcon size={32} />
+                      )}
+                    </div>
+                    <h3
+                      className="text-xl md:text-2xl font-bold leading-tight"
+                      style={{ color: getVar("text-primary") }}
+                    >
+                      {cert.name}
+                    </h3>
+                  </div>
+
+                  {/* Detail Sertifikasi */}
+                  <div className="mb-4 flex-grow">
+                    <p
+                      className="text-base mb-2 flex items-center"
+                      style={{ color: getVar("text-secondary") }}
+                    >
+                      <span
+                        className="mr-2 flex-shrink-0"
+                        style={{ color: getVar("button-secondary-text") }}
+                      >
+                        <GraduationCap size={18} />
+                      </span>{" "}
+                      {cert.issuer}
+                    </p>
+                    <p
+                      className="text-base mb-4 flex items-center"
+                      style={{ color: getVar("text-secondary") }}
+                    >
+                      <span
+                        className="mr-2 flex-shrink-0"
+                        style={{ color: getVar("button-secondary-text-alt") }}
+                      >
+                        <Calendar size={18} />
+                      </span>{" "}
+                      {cert.date}
+                    </p>
+
+                    {cert.description && (
+                      <p
+                        className="text-base leading-relaxed"
+                        style={{ color: getVar("text-secondary") }}
+                      >
+                        {cert.description}
+                      </p>
                     )}
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-purple-200 transition-colors duration-300 leading-tight">
-                    {cert.name}
-                  </h3>
-                </div>
 
-                {/* Detail Sertifikasi */}
-                <div className="mb-4 flex-grow">
-                  <p className="text-neutral-400 text-base mb-2 flex items-center">
-                    <span className="mr-2 text-purple-400 flex-shrink-0">
-                      <GraduationCap size={18} />
-                    </span>{" "}
-                    {cert.issuer}
-                  </p>
-                  <p className="text-neutral-500 text-base mb-4 flex items-center">
-                    <span className="mr-2 text-blue-500 flex-shrink-0">
-                      <Calendar size={18} />
-                    </span>{" "}
-                    {cert.date}
-                  </p>
-
-                  {cert.description && (
-                    <p className="text-neutral-300 text-base leading-relaxed">
-                      {cert.description}
-                    </p>
+                  {/* View Credential */}
+                  {cert.url && (
+                    <div
+                      className="mt-auto pt-4"
+                      style={{
+                        borderTop: `1px solid ${getVar("border-divider")}`,
+                      }}
+                    >
+                      <a
+                        href={cert.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-5 py-2.5 rounded-full font-semibold shadow-md hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-105 group-hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2"
+                        style={
+                          {
+                            backgroundColor: getVar("button-secondary-bg"),
+                            color: getVar("button-secondary-text"),
+                            "--tw-ring-color": getVar(
+                              "button-secondary-text-alt"
+                            ),
+                            "--tw-ring-offset-color": getVar("card-bg"),
+                          } as React.CSSProperties
+                        }
+                      >
+                        View Credential{" "}
+                        <ExternalLink size={16} className="ml-2" />
+                      </a>
+                    </div>
                   )}
                 </div>
-
-                {/* Tombol View Credential */}
-                {cert.url && (
-                  <div className="mt-auto pt-4 border-t border-neutral-700">
-                    <a
-                      href={cert.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-5 py-2.5 bg-neutral-700 text-purple-300 rounded-full font-semibold shadow-md hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-105 group-hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-800"
-                    >
-                      View Credential{" "}
-                      <ExternalLink size={16} className="ml-2" />
-                    </a>
-                  </div>
-                )}
               </div>
+            ))
+          ) : (
+            <div
+              className="md:col-span-3 text-center py-10"
+              style={{ color: getVar("text-secondary") }}
+            >
+              No items found for this category.
             </div>
-          ))}
+          )}
         </div>
 
         {/* Pagination Controls */}
@@ -208,7 +353,11 @@ const Certifications = () => {
             <button
               onClick={prevPage}
               disabled={currentPage === 1}
-              className="p-3 bg-neutral-800 rounded-full text-neutral-300 hover:bg-neutral-700 hover:text-white transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+              className="p-3 rounded-full shadow-md transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              style={{
+                backgroundColor: getVar("button-secondary-bg"),
+                color: getVar("foreground"),
+              }}
               aria-label="Previous page"
             >
               <ChevronLeft size={20} />
@@ -217,11 +366,14 @@ const Certifications = () => {
               <button
                 key={i + 1}
                 onClick={() => paginate(i + 1)}
-                className={`px-4 py-2 rounded-full font-semibold transition-colors duration-300 shadow-md ${
-                  currentPage === i + 1
-                    ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white"
-                    : "bg-neutral-800 text-neutral-300 hover:bg-neutral-700 hover:text-white"
-                }`}
+                className="px-4 py-2 rounded-full font-semibold transition-colors duration-300 shadow-md"
+                style={{
+                  background:
+                    currentPage === i + 1
+                      ? getVar("button-primary-bg")
+                      : getVar("button-secondary-bg"),
+                  color: currentPage === i + 1 ? "white" : getVar("foreground"),
+                }}
                 aria-label={`Page ${i + 1}`}
               >
                 {i + 1}
@@ -230,7 +382,11 @@ const Certifications = () => {
             <button
               onClick={nextPage}
               disabled={currentPage === totalPages}
-              className="p-3 bg-neutral-800 rounded-full text-neutral-300 hover:bg-neutral-700 hover:text-white transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
+              className="p-3 rounded-full shadow-md transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              style={{
+                backgroundColor: getVar("button-secondary-bg"),
+                color: getVar("foreground"),
+              }}
               aria-label="Next page"
             >
               <ChevronRight size={20} />
