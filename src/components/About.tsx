@@ -1,216 +1,395 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Briefcase, GraduationCap, Code, ChevronRight, Award, Calendar } from "lucide-react";
+import {
+  Briefcase,
+  GraduationCap,
+  Code,
+  ChevronRight,
+  Award,
+  Calendar,
+  Sparkles,
+  UserCheck,
+} from "lucide-react";
+import { skills, Skill } from "@/data/skills";
+import { education, Education } from "@/data/educations";
+import { useTheme } from "@/context/ThemeContext";
 
 const About = () => {
   const [activeTab, setActiveTab] = useState("skills");
   const [isVisible, setIsVisible] = useState(false);
 
+  const { theme } = useTheme();
+
   useEffect(() => {
-    setIsVisible(true);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    const section = document.getElementById("about");
+    if (section) {
+      observer.observe(section);
+    }
+
+    return () => {
+      if (section) {
+        observer.unobserve(section);
+      }
+    };
   }, []);
 
-  const skills = [
-    { name: "React.js", level: 90, category: "frontend" },
-    { name: "Next.js", level: 85, category: "frontend" },
-    { name: "TypeScript", level: 80, category: "frontend" },
-    { name: "Node.js", level: 75, category: "backend" },
-    { name: "Tailwind CSS", level: 95, category: "frontend" },
-    { name: "Bootstrap", level: 90, category: "frontend" },
-    { name: "JavaScript", level: 90, category: "frontend" },
-    { name: "Laravel", level: 90, category: "backend" },
-    { name: "PHP", level: 90, category: "backend" },
-    { name: "HTML5", level: 95, category: "frontend" },
-    { name: "CSS3", level: 90, category: "frontend" },
-    { name: "Git", level: 85, category: "tools" },
-    { name: "UI/UX Design", level: 80, category: "design" },
-  ];
+  const getVar = (varName: string) => `var(--${varName})`;
 
-  const experiences = [
-    {
-      title: "Senior Frontend Developer",
-      company: "Tech Solutions Inc.",
-      period: "2022 - Present",
-      description:
-        "Lead frontend development for enterprise applications using React and Next.js. Improved site performance by 40% through optimization techniques.",
-      achievements: [
-        "Led a team of 5 developers to deliver projects on time",
-        "Implemented CI/CD pipeline reducing deployment time by 60%",
-        "Mentored junior developers and conducted code reviews"
-      ]
-    },
-    {
-      title: "Web Developer",
-      company: "Digital Innovations",
-      period: "2020 - 2022",
-      description:
-        "Developed responsive websites for various clients using modern JavaScript frameworks and CSS preprocessors.",
-      achievements: [
-        "Created 15+ client websites with responsive designs",
-        "Integrated various third-party APIs and payment gateways",
-        "Optimized website performance achieving 95+ PageSpeed scores"
-      ]
-    },
-    {
-      title: "Junior Developer",
-      company: "WebCraft Agency",
-      period: "2018 - 2020",
-      description:
-        "Collaborated with design team to implement UI designs for small to medium business websites.",
-      achievements: [
-        "Built and maintained WordPress sites for 10+ clients",
-        "Assisted in migrating legacy codebase to modern frameworks",
-        "Participated in client meetings and requirement gathering"
-      ]
-    },
-  ];
-
-  const education = [
-    {
-      degree: "Bachelor of Computer Science",
-      institution: "Dian Nuswantoro University",
-      period: "2022 - now",
-      description: "Specialized in Web Technologies and Information Systems.",
-      achievements: [
-        "Graduated with First Class Honors",
-        "Final year project: Building a learning management system",
-        "Active member of the Computer Science Society"
-      ]
-    },
-    {
-      degree: "Science High School Diploma",
-      institution: "SMA Mardisiswa Semarang",
-      period: "2018",
-      description:
-        "6-month intensive program focusing on modern web development technologies.",
-      achievements: [
-        "Completed with distinction",
-        "Built 5 full-stack projects during the course",
-        "Selected for mentorship program with industry professionals"
-      ]
-    },
-  ];
-
-  // Group skills by category for better organization
   const skillCategories = {
-    frontend: { name: "Frontend", icon: <Code size={18} /> },
-    backend: { name: "Backend", icon: <Code size={18} /> },
-    design: { name: "Design", icon: <Code size={18} /> },
-    tools: { name: "Tools", icon: <Code size={18} /> }
+    frontend: { name: "Frontend", icon: <Code size={20} /> },
+    backend: { name: "Backend", icon: <Code size={20} /> },
+    design: { name: "Design", icon: <Code size={20} /> },
+    tools: { name: "Tools", icon: <Code size={20} /> },
   };
 
   return (
-    <section id="about" className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-10'}`}>
-          <span className="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium mb-4">About Me</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
-            Know More About Me
+    <section
+      id="about"
+      className="py-8 md:py-12 relative overflow-hidden"
+      style={{
+        backgroundColor: getVar("background"),
+        color: getVar("foreground"),
+      }}
+    >
+      <div className="absolute inset-0 z-0 opacity-20">
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-700 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
+        <div className="absolute top-1/2 right-1/4 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-1/4 left-1/2 w-72 h-72 bg-pink-700 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-4000"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div
+          className={`text-center mb-12 md:mb-16 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <span
+            className="inline-block px-3 py-1 rounded-full text-sm font-medium mb-4 border shadow-md"
+            style={{
+              background: getVar("card-border"),
+              borderColor: getVar("border-divider"),
+              color: getVar("text-secondary"),
+            }}
+          >
+            🚀 About Me
+          </span>
+          <h2
+            className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight"
+            style={{ color: getVar("text-primary") }}
+          >
+            Dive Deeper Into My{" "}
+            <span
+              className="text-transparent bg-clip-text"
+              style={{ color: getVar("button-primary-bg") }}
+            >
+              Journey
+            </span>
           </h2>
-          <div className="mt-4 h-1 w-24 bg-indigo-600 mx-auto rounded-full"></div>
+          <p
+            className="mt-4 text-lg max-w-2xl mx-auto"
+            style={{ color: getVar("text-secondary") }}
+          >
+            Discover my passion, expertise, and educational background that
+            shape my development journey.
+          </p>
+          <div
+            className="mt-6 h-1.5 w-32 mx-auto rounded-full"
+            style={{ background: getVar("button-primary-bg") }}
+          ></div>
         </div>
 
-        <div className="flex flex-col lg:flex items-center gap-12 lg:gap-16">
-          {/* Right column - Content */}
-          <div className={`w-full mt-16 lg:mt-0 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0 transform translate-y-10'}`}>
-            <div className="flex items-center mb-4">
-              <span className="inline-block bg-indigo-100 p-2 rounded-md text-indigo-600 mr-3">
-                <Code size={20} />
+        {/* Main Content Layout */}
+        <div className="flex flex-col lg:flex-row items-start lg:items-stretch gap-12 lg:gap-16">
+          <div
+            className={`w-full lg:w-1/3 flex flex-col items-center lg:items-start transition-all duration-1000 delay-300 ${
+              isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-10"
+            }`}
+          >
+            {/* Profile Image */}
+            <div
+              className="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 shadow-2xl flex-shrink-0"
+              style={{ borderColor: getVar("card-border") }}
+            >
+              <Image
+                src="/images/about.png"
+                alt="Ariq Farhan Profile"
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority
+              />
+              <div
+                className="absolute inset-0 rounded-full ring-4 ring-offset-4 animate-pulse-fade"
+                style={
+                  {
+                    "--tw-ring-color": getVar("button-primary-bg"),
+                    "--tw-ring-offset-color": getVar("background"),
+                  } as React.CSSProperties
+                }
+              ></div>
+            </div>
+
+            {/* Stats Card */}
+            <div
+              className="mt-12 w-full max-w-xs md:max-w-md rounded-xl p-6 shadow-lg border flex flex-col gap-4"
+              style={{
+                backgroundColor: getVar("card-bg"),
+                borderColor: getVar("border-divider"),
+              }}
+            >
+              <div
+                className="flex items-center"
+                style={{ color: getVar("text-primary") }}
+              >
+                <Briefcase size={24} className="text-blue-400 mr-3" />{" "}
+                {/* Warna ikon tetap */}
+                <div>
+                  <h4 className="font-semibold text-lg">
+                    5+ Projects Completed
+                  </h4>
+                  <p
+                    className="text-sm"
+                    style={{ color: getVar("text-secondary") }}
+                  >
+                    Successfully delivered diverse web solutions.
+                  </p>
+                </div>
+              </div>
+              <div
+                className="flex items-center"
+                style={{ color: getVar("text-primary") }}
+              >
+                <Award size={24} className="text-yellow-400 mr-3" />{" "}
+                <div>
+                  <h4 className="font-semibold text-lg">
+                    2 Years of Experience
+                  </h4>
+                  <p
+                    className="text-sm"
+                    style={{ color: getVar("text-secondary") }}
+                  >
+                    Passionate about cutting-edge web technologies.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - About Text & Tabs */}
+          <div
+            className={`w-full lg:w-2/3 transition-all duration-1000 delay-500 ${
+              isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-10"
+            }`}
+          >
+            <div className="flex items-center mb-6">
+              <span
+                className="inline-block p-3 rounded-xl mr-4 border shadow-md"
+                style={{
+                  backgroundColor: getVar("card-border"),
+                  color: getVar("text-secondary"),
+                  borderColor: getVar("border-divider"),
+                }}
+              >
+                <Code size={24} className="text-blue-300" />{" "}
+                {/* Warna ikon tetap */}
               </span>
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-800">
-                Web Developer
+              <h3
+                className="text-3xl md:text-4xl font-extrabold leading-tight"
+                style={{ color: getVar("text-primary") }}
+              >
+                Web{" "}
+                <span
+                  className="bg-clip-text text-transparent"
+                  style={{ color: getVar("button-secondary-text") }}
+                >
+                  Developer
+                </span>
               </h3>
             </div>
 
-            <p className="text-gray-600 mb-4 leading-relaxed text-base md:text-lg">
-              Hi there! I'm a passionate web developer with a strong focus on creating 
-              intuitive and high-performance websites. I specialize in building modern 
-              web applications using cutting-edge technologies that are both beautiful and scalable.
+            <p
+              className="text-lg mb-6 leading-relaxed max-w-full lg:max-w-none"
+              style={{ color: getVar("text-secondary") }}
+            >
+              Hi there! I'm a passionate{" "}
+              <strong style={{ color: getVar("text-primary") }}>
+                web developer
+              </strong>{" "}
+              with a strong focus on creating intuitive and high-performance
+              websites. I specialize in building modern web applications using
+              cutting-edge technologies that are both{" "}
+              <strong style={{ color: getVar("text-primary") }}>
+                beautiful and scalable.
+              </strong>
             </p>
 
-            <p className="text-gray-600 mb-8 leading-relaxed text-base md:text-lg">
+            <p
+              className="text-lg mb-8 leading-relaxed max-w-full lg:max-w-none"
+              style={{ color: getVar("text-secondary") }}
+            >
               My journey in web development started when I was in college, and
               since then, I've worked on numerous projects ranging from small
               business websites to complex web applications. I believe in
-              writing clean, maintainable code and creating designs that are
-              both aesthetically pleasing and functional.
+              writing{" "}
+              <strong style={{ color: getVar("text-primary") }}>
+                clean, maintainable code
+              </strong>{" "}
+              and crafting user experiences that are both{" "}
+              <strong style={{ color: getVar("text-primary") }}>
+                aesthetically pleasing and functional.
+              </strong>
             </p>
 
-            {/* Improved Tabs */}
+            {/* Tab Navigation */}
             <div className="mb-8">
-              {/* Tab Navigation - Enhanced for mobile with sliding indicator */}
-              <div className="flex bg-gray-100 p-1 rounded-lg mb-6 shadow-sm max-w-md">
+              <div
+                className="flex p-1 rounded-xl mb-8 shadow-xl border max-w-full lg:max-w-xl mx-auto lg:mx-0"
+                style={{
+                  backgroundColor: getVar("card-border"),
+                  borderColor: getVar("border-divider"),
+                }}
+              >
                 <button
-                  className={`py-2 px-4 rounded-md font-medium text-sm flex items-center justify-center flex-1 transition-all duration-300 ${
-                    activeTab === "skills"
-                      ? "bg-white text-indigo-700 shadow-sm"
-                      : "text-gray-600 hover:text-gray-900"
+                  className={`py-3 px-6 rounded-lg font-semibold text-base flex items-center justify-center flex-1 transition-all duration-300 transform hover:scale-105 cursor-pointer ${
+                    activeTab === "skills" ? "shadow-lg" : ""
                   }`}
+                  style={{
+                    background:
+                      activeTab === "skills"
+                        ? getVar("button-primary-bg")
+                        : "transparent",
+                    color:
+                      activeTab === "skills"
+                        ? "white"
+                        : getVar("text-secondary"),
+                  }}
                   onClick={() => setActiveTab("skills")}
                 >
-                  <Code size={16} className="mr-1.5" />
-                  Skills
+                  <Code size={18} className="mr-2" />
+                  My Skills
                 </button>
                 <button
-                  className={`py-2 px-4 rounded-md font-medium text-sm flex items-center justify-center flex-1 transition-all duration-300 ${
-                    activeTab === "experience"
-                      ? "bg-white text-indigo-700 shadow-sm"
-                      : "text-gray-600 hover:text-gray-900"
+                  className={`py-3 px-6 rounded-lg font-semibold text-base flex items-center justify-center flex-1 transition-all duration-300 transform hover:scale-105 cursor-pointer ${
+                    activeTab === "education" ? "shadow-lg" : ""
                   }`}
-                  onClick={() => setActiveTab("experience")}
-                >
-                  <Briefcase size={16} className="mr-1.5" />
-                  Experience
-                </button>
-                <button
-                  className={`py-2 px-4 rounded-md font-medium text-sm flex items-center justify-center flex-1 transition-all duration-300 ${
-                    activeTab === "education"
-                      ? "bg-white text-indigo-700 shadow-sm"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
+                  style={{
+                    background:
+                      activeTab === "education"
+                        ? getVar("button-primary-bg")
+                        : "transparent",
+                    color:
+                      activeTab === "education"
+                        ? "white"
+                        : getVar("text-secondary"),
+                  }}
                   onClick={() => setActiveTab("education")}
                 >
-                  <GraduationCap size={16} className="mr-1.5" />
+                  <GraduationCap size={18} className="mr-2" />
                   Education
                 </button>
               </div>
 
-              {/* Tab content with animations */}
               <div className="py-4">
-                {/* Skills Tab - Enhanced for mobile and visual appeal */}
+                {/* Skills Tab Content */}
                 {activeTab === "skills" && (
-                  <div className="animate-fadeIn">
-                    {/* Skill categories */}
+                  <div className="animate-fadeIn transition-opacity duration-500 delay-200">
                     {Object.keys(skillCategories).map((category) => (
-                      <div key={category} className="mb-6">
-                        <div className="flex items-center mb-3">
-                          <span className="text-indigo-600 mr-2">
-                            {skillCategories[category as keyof typeof skillCategories].icon}
+                      <div
+                        key={category}
+                        className="mb-8 p-4 rounded-lg border shadow-lg"
+                        style={{
+                          backgroundColor: getVar("card-bg"),
+                          borderColor: getVar("border-divider"),
+                        }}
+                      >
+                        <div className="flex items-center mb-4">
+                          <span
+                            className="mr-3"
+                            style={{ color: getVar("button-secondary-text") }}
+                          >
+                            {
+                              skillCategories[
+                                category as keyof typeof skillCategories
+                              ].icon
+                            }
                           </span>
-                          <h4 className="text-lg font-semibold text-gray-800">
-                            {skillCategories[category as keyof typeof skillCategories].name}
+                          <h4
+                            className="text-xl font-bold"
+                            style={{ color: getVar("text-primary") }}
+                          >
+                            {
+                              skillCategories[
+                                category as keyof typeof skillCategories
+                              ].name
+                            }
                           </h4>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-5">
                           {skills
                             .filter((skill) => skill.category === category)
-                            .map((skill, index) => (
-                              <div key={index} className="mb-3 hover:transform hover:translate-x-1 transition-transform duration-300">
-                                <div className="flex justify-between mb-1">
-                                  <span className="text-gray-700 font-medium text-sm">
+                            .map((skill: Skill, index) => (
+                              <div
+                                key={index}
+                                className="group relative overflow-hidden rounded-md cursor-pointer transform hover:scale-105 transition-transform duration-300 ease-out p-1"
+                              >
+                                <div className="flex justify-between items-end mb-1">
+                                  <span
+                                    className="font-medium text-sm group-hover:text-white transition-colors duration-200"
+                                    style={{ color: getVar("text-secondary") }}
+                                  >
                                     {skill.name}
                                   </span>
-                                  <span className="text-indigo-600 font-medium text-sm">
+                                  <span
+                                    className="font-medium text-xs group-hover:text-white transition-colors duration-200"
+                                    style={{ color: getVar("text-secondary") }}
+                                  >
                                     {skill.level}%
                                   </span>
                                 </div>
-                                <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
+                                <div
+                                  className="w-full rounded-full h-2.5 overflow-hidden"
+                                  style={{
+                                    backgroundColor: getVar("card-border"),
+                                  }}
+                                >
                                   <div
-                                    className="bg-indigo-600 h-2.5 rounded-full transition-all duration-1000 ease-out"
-                                    style={{ width: isVisible ? `${skill.level}%` : '0%' }}
+                                    className="h-full rounded-full transition-all duration-1000 ease-out"
+                                    style={{
+                                      background: getVar("button-primary-bg"),
+                                      width: isVisible
+                                        ? `${skill.level}%`
+                                        : "0%",
+                                    }}
                                   ></div>
                                 </div>
+                                <span
+                                  className="absolute -top-6 left-1/2 -translate-x-1/2 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                  style={{
+                                    backgroundColor: getVar("card-border"),
+                                    color: getVar("text-primary"),
+                                  }}
+                                >
+                                  {skill.level}%
+                                </span>
                               </div>
                             ))}
                         </div>
@@ -219,81 +398,93 @@ const About = () => {
                   </div>
                 )}
 
-                {/* Experience Tab - Enhanced with timeline and cards */}
-                {activeTab === "experience" && (
-                  <div className="space-y-6 animate-fadeIn">
-                    {experiences.map((exp, index) => (
-                      <div
-                        key={index}
-                        className="relative pl-6 md:pl-8 pb-6 border-l-2 border-indigo-200 hover:border-indigo-600 transition-colors duration-300"
-                      >
-                        <div className="absolute -left-2.5 top-0 w-5 h-5 rounded-full bg-white border-2 border-indigo-600 shadow"></div>
-                        
-                        <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
-                          <div className="flex items-center mb-2">
-                            <Calendar size={16} className="text-indigo-600 mr-2" />
-                            <span className="bg-indigo-50 text-indigo-700 px-2 py-1 rounded-full text-xs font-medium">
-                              {exp.period}
-                            </span>
-                          </div>
-                          
-                          <h4 className="text-lg md:text-xl font-bold text-gray-800 mb-1">
-                            {exp.title}
-                          </h4>
-                          <p className="text-indigo-600 font-medium mb-3 text-sm md:text-base">
-                            {exp.company}
-                          </p>
-                          <p className="text-gray-600 mb-4 text-sm md:text-base">
-                            {exp.description}
-                          </p>
-                          
-                          <div className="space-y-2">
-                            {exp.achievements.map((achievement, i) => (
-                              <div key={i} className="flex items-start">
-                                <ChevronRight size={16} className="text-indigo-600 mt-1 mr-2 flex-shrink-0" />
-                                <p className="text-gray-600 text-sm">{achievement}</p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {/* Education Tab - Enhanced with timeline and cards */}
+                {/* Education Tab Content */}
                 {activeTab === "education" && (
-                  <div className="space-y-6 animate-fadeIn">
-                    {education.map((edu, index) => (
+                  <div className="space-y-10 animate-fadeIn transition-opacity duration-500 delay-200">
+                    {education.map((edu: Education, index) => (
                       <div
                         key={index}
-                        className="relative pl-6 md:pl-8 pb-6 border-l-2 border-indigo-200 hover:border-indigo-600 transition-colors duration-300"
+                        className="relative pl-8 md:pl-10 pb-10 last:pb-0 group"
                       >
-                        <div className="absolute -left-2.5 top-0 w-5 h-5 rounded-full bg-white border-2 border-indigo-600 shadow"></div>
-                        
-                        <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
-                          <div className="flex items-center mb-2">
-                            <Calendar size={16} className="text-indigo-600 mr-2" />
-                            <span className="bg-indigo-50 text-indigo-700 px-2 py-1 rounded-full text-xs font-medium">
+                        <div
+                          className="absolute left-0 top-0 w-5 h-5 rounded-full border-2 shadow-lg z-10 transform group-hover:scale-125 transition-transform duration-300"
+                          style={{
+                            background: getVar("button-primary-bg"),
+                            borderColor: getVar("background"),
+                          }}
+                        ></div>
+                        {index < education.length - 1 && (
+                          <div
+                            className="absolute left-2 top-0 bottom-0 w-0.5 ml-0.5"
+                            style={{
+                              backgroundColor: getVar("border-divider"),
+                            }}
+                          ></div>
+                        )}
+
+                        {/* Education Card */}
+                        <div
+                          className="p-6 md:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border relative z-10 transform group-hover:translate-y-[-5px] transition-transform duration-300 ease-out"
+                          style={{
+                            backgroundColor: getVar("card-bg"),
+                            borderColor: getVar("border-divider"),
+                          }}
+                        >
+                          <div className="flex items-center mb-3">
+                            <Calendar
+                              size={18}
+                              className="mr-2"
+                              style={{ color: getVar("text-secondary") }}
+                            />
+                            <span
+                              className="px-3 py-1 rounded-full text-xs font-medium border shadow-inner"
+                              style={{
+                                backgroundColor: getVar("card-border"),
+                                color: getVar("text-secondary"),
+                                borderColor: getVar("border-divider"),
+                              }}
+                            >
                               {edu.period}
                             </span>
                           </div>
-                          
-                          <h4 className="text-lg md:text-xl font-bold text-gray-800 mb-1">
+
+                          <h4
+                            className="text-xl md:text-2xl font-extrabold mb-2"
+                            style={{ color: getVar("text-primary") }}
+                          >
                             {edu.degree}
                           </h4>
-                          <p className="text-indigo-600 font-medium mb-3 text-sm md:text-base">
+                          <p
+                            className="font-semibold mb-4 text-base md:text-lg"
+                            style={{
+                              color: getVar("button-secondary-text-alt"),
+                            }}
+                          >
                             {edu.institution}
                           </p>
-                          <p className="text-gray-600 mb-4 text-sm md:text-base">
+                          <p
+                            className="mb-4 text-base md:text-lg leading-relaxed"
+                            style={{ color: getVar("text-secondary") }}
+                          >
                             {edu.description}
                           </p>
-                          
-                          <div className="space-y-2">
+
+                          <div className="space-y-3">
                             {edu.achievements.map((achievement, i) => (
                               <div key={i} className="flex items-start">
-                                <ChevronRight size={16} className="text-indigo-600 mt-1 mr-2 flex-shrink-0" />
-                                <p className="text-gray-600 text-sm">{achievement}</p>
+                                <ChevronRight
+                                  size={18}
+                                  className="mt-1 mr-2 flex-shrink-0"
+                                  style={{
+                                    color: getVar("button-secondary-text-alt"),
+                                  }}
+                                />
+                                <p
+                                  className="text-base"
+                                  style={{ color: getVar("text-secondary") }}
+                                >
+                                  {achievement}
+                                </p>
                               </div>
                             ))}
                           </div>
