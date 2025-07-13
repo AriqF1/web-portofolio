@@ -157,7 +157,7 @@ const Projects = () => {
           >
             Here are some of my recent projects that showcase my skills and
             experience. Each project reflects my passion for creating
-            **intuitive and visually appealing** web applications.
+            intuitive and visually appealing web applications.
           </p>
           <div
             className="mt-6 h-1.5 w-32 mx-auto rounded-full"
@@ -269,7 +269,7 @@ const Projects = () => {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         priority={index < 3}
                       />
-                      <div className="lg: absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="lg: absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 ">
                         <div className="flex space-x-4">
                           {project.githubUrl && (
                             <a
@@ -322,6 +322,7 @@ const Projects = () => {
                           </span>
                         ))}
                       </div>
+                      {/* {button} */}
                       <div
                         className="flex flex-wrap gap-3 mt-auto pt-4 lg:hidden"
                         style={{
@@ -372,7 +373,7 @@ const Projects = () => {
                 <button
                   onClick={prevPage}
                   disabled={currentPage === 1}
-                  className="p-3 rounded-full shadow-md transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="cursor-pointer p-3 rounded-full shadow-md transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{
                     backgroundColor: getVar("button-secondary-bg"),
                     color: getVar("foreground"),
@@ -385,7 +386,7 @@ const Projects = () => {
                   <button
                     key={i + 1}
                     onClick={() => paginate(i + 1)}
-                    className="px-4 py-2 rounded-full font-semibold transition-colors duration-300 shadow-md"
+                    className="cursor-pointer px-4 py-2 rounded-full font-semibold transition-colors duration-300 shadow-md "
                     style={{
                       background:
                         currentPage === i + 1
@@ -402,7 +403,7 @@ const Projects = () => {
                 <button
                   onClick={nextPage}
                   disabled={currentPage === totalPages}
-                  className="p-3 rounded-full shadow-md transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="cursor-pointer p-3 rounded-full shadow-md transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{
                     backgroundColor: getVar("button-secondary-bg"),
                     color: getVar("foreground"),
