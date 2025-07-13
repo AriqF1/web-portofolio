@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
+import Script from "next/script"; 
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ariq Farhan | Portfolio",
+  title: "Ariq Farhan Althaf | Portfolio",
   description:
-    "Ariq Farhan's personal portfolio showcasing web development, backend development, and Software engineering projects. Explore my work and connect with me!",
+    "Ariq Farhan Althaf personal portfolio showcasing web development, backend development, and Software engineering projects. Explore my work and connect with me!",
 };
 
 export default function RootLayout({
@@ -24,11 +25,30 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ariq Farhan Althaf",
+    "url": "https://www.farhanariq.my.id", 
+    "sameAs": [
+      "https://www.linkedin.com/in/ariqfarhan-dev/", 
+      "https://github.com/AriqF1", 
+    ],
+    "jobTitle": "Web Developer, Backend Developer, Software Engineer",
+    "studentOf": "Universitas Dian Nuswantoro" 
+  };
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Script
+          id="person-schema" 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        />
+
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

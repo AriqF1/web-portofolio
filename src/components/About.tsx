@@ -124,12 +124,12 @@ const About = () => {
           >
             {/* Profile Image */}
             <div
-              className="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 shadow-2xl flex-shrink-0"
+              className="relative w-72 h-72 md:w-80 md:h-80 rounded-xl overflow-hidden border-4 shadow-2xl flex-shrink-0"
               style={{ borderColor: getVar("card-border") }}
             >
               <Image
-                src="/images/about.png"
-                alt="Ariq Farhan Profile"
+                src="/images/personal/about.png"
+                alt="Ariq Farhan Althaf Profile"
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -161,13 +161,13 @@ const About = () => {
                 <Briefcase size={24} className="text-blue-400 mr-3" />{" "}
                 <div>
                   <h4 className="font-semibold text-lg">
-                    5+ Projects Completed
+                    3+ Projects Completed
                   </h4>
                   <p
                     className="text-sm"
                     style={{ color: getVar("text-secondary") }}
                   >
-                    Successfully delivered diverse web solutions.
+                   Successfully created the project for experience.
                   </p>
                 </div>
               </div>
@@ -178,7 +178,7 @@ const About = () => {
                 <Award size={24} className="text-yellow-400 mr-3" />{" "}
                 <div>
                   <h4 className="font-semibold text-lg">
-                    2 Years of Experience
+                    1+ Years of Experience
                   </h4>
                   <p
                     className="text-sm"
