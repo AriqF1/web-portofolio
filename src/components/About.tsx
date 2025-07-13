@@ -11,9 +11,10 @@ import {
   Sparkles,
   UserCheck,
 } from "lucide-react";
-import { skills, Skill } from "@/data/skills";
+import { skills, Skill } from "@/data/skills"; 
 import { education, Education } from "@/data/educations";
 import { useTheme } from "@/context/ThemeContext";
+
 
 const About = () => {
   const [activeTab, setActiveTab] = useState("skills");
@@ -53,7 +54,6 @@ const About = () => {
   const skillCategories = {
     frontend: { name: "Frontend", icon: <Code size={20} /> },
     backend: { name: "Backend", icon: <Code size={20} /> },
-    design: { name: "Design", icon: <Code size={20} /> },
     tools: { name: "Tools", icon: <Code size={20} /> },
   };
 
@@ -67,9 +67,9 @@ const About = () => {
       }}
     >
       <div className="absolute inset-0 z-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-700 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
-        <div className="absolute top-1/2 right-1/4 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-1/4 left-1/2 w-72 h-72 bg-pink-700 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-4000"></div>
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-700 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div className="absolute top-1/2 right-1/4 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-1/4 left-1/2 w-72 h-72 bg-pink-700 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -159,7 +159,6 @@ const About = () => {
                 style={{ color: getVar("text-primary") }}
               >
                 <Briefcase size={24} className="text-blue-400 mr-3" />{" "}
-                {/* Warna ikon tetap */}
                 <div>
                   <h4 className="font-semibold text-lg">
                     5+ Projects Completed
@@ -185,7 +184,7 @@ const About = () => {
                     className="text-sm"
                     style={{ color: getVar("text-secondary") }}
                   >
-                    Passionate about cutting-edge web technologies.
+                    Passionately developing web solutions.
                   </p>
                 </div>
               </div>
@@ -210,7 +209,6 @@ const About = () => {
                 }}
               >
                 <Code size={24} className="text-blue-300" />{" "}
-                {/* Warna ikon tetap */}
               </span>
               <h3
                 className="text-3xl md:text-4xl font-extrabold leading-tight"
@@ -343,54 +341,21 @@ const About = () => {
                             }
                           </h4>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-5">
+                        <div className="flex flex-wrap gap-3">
                           {skills
                             .filter((skill) => skill.category === category)
                             .map((skill: Skill, index) => (
-                              <div
+                              <span
                                 key={index}
-                                className="group relative overflow-hidden rounded-md cursor-pointer transform hover:scale-105 transition-transform duration-300 ease-out p-1"
+                                className="px-4 py-2 rounded-full text-base font-medium border shadow-sm transition-all duration-300 transform hover:scale-105"
+                                style={{
+                                  backgroundColor: getVar("card-border"),
+                                  color: getVar("text-primary"),
+                                  borderColor: getVar("border-divider"),
+                                }}
                               >
-                                <div className="flex justify-between items-end mb-1">
-                                  <span
-                                    className="font-medium text-sm group-hover:text-white transition-colors duration-200"
-                                    style={{ color: getVar("text-secondary") }}
-                                  >
-                                    {skill.name}
-                                  </span>
-                                  <span
-                                    className="font-medium text-xs group-hover:text-white transition-colors duration-200"
-                                    style={{ color: getVar("text-secondary") }}
-                                  >
-                                    {skill.level}%
-                                  </span>
-                                </div>
-                                <div
-                                  className="w-full rounded-full h-2.5 overflow-hidden"
-                                  style={{
-                                    backgroundColor: getVar("card-border"),
-                                  }}
-                                >
-                                  <div
-                                    className="h-full rounded-full transition-all duration-1000 ease-out"
-                                    style={{
-                                      background: getVar("button-primary-bg"),
-                                      width: isVisible
-                                        ? `${skill.level}%`
-                                        : "0%",
-                                    }}
-                                  ></div>
-                                </div>
-                                <span
-                                  className="absolute -top-6 left-1/2 -translate-x-1/2 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                                  style={{
-                                    backgroundColor: getVar("card-border"),
-                                    color: getVar("text-primary"),
-                                  }}
-                                >
-                                  {skill.level}%
-                                </span>
-                              </div>
+                                {skill.name}
+                              </span>
                             ))}
                         </div>
                       </div>
