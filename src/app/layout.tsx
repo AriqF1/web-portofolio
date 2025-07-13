@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Ariq Farhan | Portfolio",
   description:
-    "Ariq Farhan's personal portfolio showcasing web development, data engineering, and UI/UX design projects. Explore my work and connect with me!",
+    "Ariq Farhan's personal portfolio showcasing web development, backend development, and Software engineering projects. Explore my work and connect with me!",
 };
 
 export default function RootLayout({
