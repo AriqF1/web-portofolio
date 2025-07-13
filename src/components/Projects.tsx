@@ -30,7 +30,7 @@ const Projects = () => {
     "React",
     "TypeScript",
     "Tailwind CSS",
-    "Firebase",
+    "Laravel",
   ];
 
   const filteredProjects =
