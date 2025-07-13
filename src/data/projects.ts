@@ -1,5 +1,5 @@
 export interface Project {
-  id: number;
+  id: string;
   title: string;
   description: string;
   image: string;
@@ -17,38 +17,27 @@ export interface Project {
 }
 export const projects: Project[] = [
   {
-    id: 1,
+    id: "student-website",
     title: "Student Dashboard - University Management System",
     description:
-      "A fully responsive e-commerce platform built with Next.js and integrated with Stripe payment gateway.",
+      "A fully responsive student platform built with React.js and integrated with json-server.",
     image: "/images/dashboard_page.png",
-    tags: ["Next.js", "React", "Tailwind CSS", "Stripe"],
-    githubUrl: "https://github.com/yourusername/project1",
+    tags: ["React", "Tailwind CSS"],
+    githubUrl: "https://github.com/AriqF1/web-mhs",
     fullDescription:
       "This student dashboard application provides a comprehensive solution for managing academic activities, tracking performance, and accessing course materials. Built with Next.js and React, it offers a seamless experience across all devices.",
-    client: "University of Technology",
+    client: "University Assignment",
     duration: "3 months",
-    role: "Lead Developer",
+    role: "Fullstack Developer",
     features: [
-      "Real-time grade tracking and visualization",
-      "Assignment submission and feedback system",
+      "tracking and visualization using chart.js",
+      "Lecturers management",
       "Course material organization and search",
       "Calendar integration with deadline reminders",
       "Direct messaging with instructors",
       "Mobile-responsive design for on-the-go access",
     ],
-    technologies: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Firebase Authentication",
-      "Firestore Database",
-      "Node.js",
-      "Express",
-      "Chart.js",
-      "PWA capabilities",
-    ],
+    technologies: ["React", "Tailwind CSS", "Node.js", "Chart.js"],
     images: [
       "/images/dashboard_page.png",
       "/api/placeholder/800/500",
@@ -60,7 +49,7 @@ export const projects: Project[] = [
       "We implemented a secure API layer that interfaced with the university's systems, using OAuth 2.0 for authentication. For performance, we utilized static generation where possible and dynamic imports to reduce initial load times. We also developed an offline mode using service workers that allowed students to access cached materials without an internet connection.",
   },
   {
-    id: 2,
+    id: "polyclinic-webapp",
     title: "Sismenkes - Healthcare Management System",
     description:
       "A drag-and-drop task management application with user authentication and real-time updates.",
@@ -103,7 +92,7 @@ export const projects: Project[] = [
       "We implemented a role-based authentication system with granular permissions and audit logging. The UI was designed with extensive user testing involving actual healthcare providers to ensure intuitive workflows. Data is encrypted both in transit and at rest, with automated backups and disaster recovery procedures.",
   },
   {
-    id: 3,
+    id: "soccer-score-website",
     title: "Premier HUB - Soccer Score Website",
     description:
       "A modern portfolio website showcasing creative work with smooth animations and transitions.",
