@@ -2,8 +2,8 @@ import { projects, Project } from "@/data/projects";
 import ProjectDetail from "@/components/ProjectDetail";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/static/Navbar";
+import Footer from "@/static/Footer";
 
 interface ProjectDetailPageProps {
   params: {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Head from "next/head";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/static/Navbar";
+import Footer from "@/static/Footer";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
