@@ -10,6 +10,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
+import { useRouter } from "next/navigation";
 
 interface Project {
   title: string;
@@ -29,6 +30,7 @@ interface Project {
 }
 
 const ProjectDetail = ({ project }: { project: Project }) => {
+ const router = useRouter();
   if (!project) return null;
 
   const { theme } = useTheme();
@@ -51,6 +53,10 @@ const ProjectDetail = ({ project }: { project: Project }) => {
 
   const getVar = (varName: string) => `var(--${varName})`;
 
+  const handleGoBack = () => {
+    router.back();
+  }
+
   return (
     <div
       className="relative p-6 md:p-10 lg:p-8 overflow-hidden"
@@ -65,6 +71,18 @@ const ProjectDetail = ({ project }: { project: Project }) => {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
+        <div className="mb-4 text-center md:text-center lg:text-left">
+          <button
+            onClick={handleGoBack}
+            className="px-4 py-2 rounded-md font-semibold rounded-xl shadow-lg border transition-colors duration-300 hover:bg-neutral-800 hover:text-neutral-200 cursor-pointer"
+            style={{
+              backgroundColor: getVar("card-bg"),
+              color: getVar("button-primary-text"),
+            }}
+          >
+            ← Go Back
+          </button>
+        </div>
         <div className="text-center mb-12 md:mb-16">
           <h1
             className="text-2xl md:text-2xl lg:text-3xl font-extrabold leading-tight tracking-tight mb-4"
