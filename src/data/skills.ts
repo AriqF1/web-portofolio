@@ -1,20 +1,28 @@
 export interface Skill {
   name: string;
-  level: number;
   category: "frontend" | "backend" | "design" | "tools";
 }
+
 export const skills: Skill[] = [
-  { name: "React.js", level: 90, category: "frontend" },
-  { name: "Next.js", level: 85, category: "frontend" },
-  { name: "TypeScript", level: 80, category: "frontend" },
-  { name: "Node.js", level: 75, category: "backend" },
-  { name: "Tailwind CSS", level: 95, category: "frontend" },
-  { name: "Bootstrap", level: 90, category: "frontend" },
-  { name: "JavaScript", level: 90, category: "frontend" },
-  { name: "Laravel", level: 90, category: "backend" },
-  { name: "PHP", level: 90, category: "backend" },
-  { name: "HTML5", level: 95, category: "frontend" },
-  { name: "CSS3", level: 90, category: "frontend" },
-  { name: "Git", level: 85, category: "tools" },
-  { name: "UI/UX Design", level: 80, category: "design" },
+  { name: "React.js", category: "frontend"},
+  { name: "Next.js", category: "frontend"},
+  { name: "TypeScript", category: "frontend"},
+  { name: "Node.js", category: "backend",},
+  { name: "Tailwind CSS", category: "frontend"},
+  { name: "Bootstrap", category: "frontend"},
+  { name: "JavaScript", category: "frontend"},
+  { name: "Laravel", category: "backend"},
+  { name: "Python", category: "backend"},
+  { name: "Flask", category: "backend"},
+  { name: "Fast API", category: "backend"},
+  { name: "Django", category: "backend"},
+  { name: "SQL", category: "backend"},
+  { name: "PHP", category: "backend"},
+  { name: "HTML5", category: "frontend"},
+  { name: "CSS3", category: "frontend"},
+  { name: "Git", category: "tools"},
+  { name: "Github", category: "tools"},
+  { name: "Postman", category: "tools"},
+  { name: "VsCode", category: "tools"},
+  
 ];
