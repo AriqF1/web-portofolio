@@ -22,7 +22,7 @@ const Projects = () => {
   const { theme } = useTheme();
 
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 3;
 
   const filters = [
     "all",
