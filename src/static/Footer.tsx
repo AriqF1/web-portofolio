@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Github, Linkedin, Mail, ArrowUp, Zap, Link2 } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUp, Zap, Link2 ,Phone} from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 
 interface FooterProps {
@@ -58,7 +58,7 @@ const Footer: React.FC<FooterProps> = ({ customClass = "" }) => {
     },
     {
       name: "Email",
-      url: "mailto:farhanariq.dev@gmail.com",
+      url: "mailto:farhanariq.dev@gmail.com?subject=Halo%20Ariq&body=Pesan%20ini%20dari%20website%20Anda",
       icon: <Mail size={22} />,
       ariaLabel: "Send Email",
     },
@@ -226,17 +226,28 @@ const Footer: React.FC<FooterProps> = ({ customClass = "" }) => {
               farhanariq.dev@gmail.com
             </p>
             {/* Call to action button */}
-            <div className="mt-6 animate-fadeIn delay-600">
+            <div className="flex mt-6 gap-x-4 animate-fadeIn delay-600">
               <a
-                href="mailto:farhanariq.dev@gmail.com"
-                className="inline-flex items-center px-8 py-3 rounded shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-base md:text-lg transform hover:scale-105"
+                href="mailto:farhanariq.dev@gmail.com?subject=Halo%20Ariq&body=Saya%20tertarik%20dengan%20website%20portofolio%20Anda!"
+                className="inline-flex items-center px-6 py-3 rounded shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-sm md:text-base transform hover:scale-105"
                 style={{
                   background: getVar("button-primary-bg"),
                   color: "white",
                 }}
               >
-                <Mail size={18} className="mr-2" />
-                Say Hello!
+                <Mail size={28} className="mr-2" />
+                Mail
+              </a>
+              <a
+                href="https://wa.me/6285156181393?text=Halo%20Ariq%2C%20saya%20tertarik%20dengan%20portofolio%20Anda"
+                className="inline-flex items-center px-6 py-3 rounded shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-sm md:text-base transform hover:scale-105"
+                style={{
+                  background: getVar("button-primary-bg"),
+                  color: "white",
+                }}
+              >
+                <Phone size={28} className="mr-2" />
+                Chat 
               </a>
             </div>
           </div>
