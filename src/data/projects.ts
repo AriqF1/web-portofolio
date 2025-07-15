@@ -21,7 +21,7 @@ export const projects: Project[] = [
     title: "Student Dashboard - University Management System",
     description:
       "A fully responsive student platform built with React.js and integrated with json-server.",
-    image: "/images/dashboard_page.png",
+    image: "/images/student-website/dashboard.png",
     tags: ["React", "Tailwind CSS"],
     githubUrl: "https://github.com/AriqF1/web-mhs",
     fullDescription:
@@ -39,9 +39,11 @@ export const projects: Project[] = [
     ],
     technologies: ["React", "Tailwind CSS", "Node.js", "Chart.js"],
     images: [
-      "/images/dashboard_page.png",
-      "/api/placeholder/800/500",
-      "/api/placeholder/800/500",
+      "/images/student-website/dashboard.png",
+      "/images/student-website/students.png",
+      "/images/student-website/studyprograms.png",
+      "/images/student-website/lessons.png",
+      "/images/student-website/lecturers.png",
     ],
     challenges:
       "The main challenge I faced in this project was creating an interactive and responsive website design. I was also quite unfamiliar with json-server at first.",
@@ -69,13 +71,7 @@ export const projects: Project[] = [
       "Doctor availability and schedule management",
       "Responsive design for desktop and mobile access",
     ],
-    technologies: [
-      "Laravel",
-      "Filament",
-      "MySQL",
-      "CSS",
-      "Tailwind CSS",
-    ],
+    technologies: ["Laravel", "Filament", "MySQL", "CSS", "Tailwind CSS"],
     images: [
       "/api/placeholder/800/500",
       "/api/placeholder/800/500",
@@ -92,7 +88,7 @@ export const projects: Project[] = [
     description:
       "A website displays score data from premier club soccer matches. data is retrieved using public fetch API",
     image: "/api/placeholder/400/320",
-    tags: ["React","Tailwind CSS"],
+    tags: ["React", "Tailwind CSS"],
     githubUrl: "https://github.com/AriqF1/web-soccer",
     fullDescription:
       "This website is created using React Js and styling from tailwindcss. The data from this website is taken from the public API of the Premier League.",
@@ -106,11 +102,7 @@ export const projects: Project[] = [
       "Dark / light mode toggle with saved preferences",
       "Optimized image loading for fast page loads",
     ],
-    technologies: [
-      "React",
-      "Tailwind CSS",
-      "Netifly Hosting",
-    ],
+    technologies: ["React", "Tailwind CSS", "Netifly Hosting"],
     images: [
       "/api/placeholder/800/500",
       "/api/placeholder/800/500",
@@ -121,13 +113,13 @@ export const projects: Project[] = [
     solutions:
       "The solution is to follow the guidelines and documentation from my mentor, which allows me to fetch APIs with clean code principles and also gain knowledge to find public APIs suitable for future projects.",
   },
-   {
+  {
     id: "learning-website",
     title: "Belajar Pintar - Learning Website",
     description:
       "A learning website for students and college students with an interactive and dynamic design.",
     image: "/api/placeholder/400/320",
-    tags: ["React","Tailwind CSS"],
+    tags: ["React", "Tailwind CSS"],
     githubUrl: "https://github.com/AriqF1/web-belajar",
     fullDescription:
       "Belajar Pintar is a website created from a university project for the mid-semester exam. This website was built using React Js for the frontend and Tailwindcss for styling. The data is stored statically in Json-server which will be fetched with AxiosInstance on each page. The data needed by users on this website is also well visualized using Chart Js on the dashboard.",
@@ -143,11 +135,7 @@ export const projects: Project[] = [
       "Responsive design that works flawlessly on all devices",
       "Achievements and progress tracking",
     ],
-    technologies: [
-      "React",
-      "Tailwind CSS",
-      "Json-server",
-    ],
+    technologies: ["React", "Tailwind CSS", "Json-server"],
     images: [
       "/api/placeholder/800/500",
       "/api/placeholder/800/500",
