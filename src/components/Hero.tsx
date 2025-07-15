@@ -139,9 +139,9 @@ const Hero = () => {
                 className="px-10 py-3 font-bold rounded-lg shadow-xl hover:bg-neutral-200 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-opacity-40 flex items-center group"
                 style={
                   {
-                    backgroundColor: getVar("button-primary-bg"),
+                    backgroundColor: getVar("button-secondary-bg"),
                     color: getVar("text-primary"),
-                    "--tw-ring-color": getVar("button-primary-bg"),
+                    "--tw-ring-color": getVar("border-divider"),
                   } as React.CSSProperties
                 }
               >
