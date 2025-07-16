@@ -320,7 +320,7 @@ const About = () => {
                       >
                         <div className="flex items-center mb-4">
                           <span
-                            className="mr-3"
+                            className="mr-3 text-2xl"
                             style={{ color: getVar("button-secondary-text") }}
                           >
                             {
@@ -346,13 +346,18 @@ const About = () => {
                             .map((skill: Skill, index) => (
                               <span
                                 key={index}
-                                className="px-4 py-2 rounded-full text-base font-medium border shadow-sm transition-all duration-300 transform hover:scale-105"
+                                className="px-4 py-2 rounded-full text-base font-medium border shadow-sm transition-all duration-300 transform hover:scale-105 flex items-center" // Tambahkan flex items-center
                                 style={{
                                   backgroundColor: getVar("card-border"),
                                   color: getVar("text-primary"),
                                   borderColor: getVar("border-divider"),
                                 }}
                               >
+                                <skill.icon
+                                  className="mr-2"
+                                  size={20}
+                                  color={skill.color}
+                                />{" "}
                                 {skill.name}
                               </span>
                             ))}
@@ -361,7 +366,6 @@ const About = () => {
                     ))}
                   </div>
                 )}
-
                 {/* Education Tab Content */}
                 {activeTab === "education" && (
                   <div className="space-y-10 animate-fadeIn transition-opacity duration-500 delay-200">
