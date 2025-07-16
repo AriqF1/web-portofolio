@@ -11,10 +11,9 @@ import {
   Sparkles,
   UserCheck,
 } from "lucide-react";
-import { skills, Skill } from "@/data/skills"; 
+import { skills, Skill } from "@/data/skills";
 import { education, Education } from "@/data/educations";
 import { useTheme } from "@/context/ThemeContext";
-
 
 const About = () => {
   const [activeTab, setActiveTab] = useState("skills");
@@ -167,7 +166,7 @@ const About = () => {
                     className="text-sm"
                     style={{ color: getVar("text-secondary") }}
                   >
-                   Successfully created the project for experience.
+                    Successfully created the project for experience.
                   </p>
                 </div>
               </div>
