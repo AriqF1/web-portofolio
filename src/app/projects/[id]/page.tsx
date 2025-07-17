@@ -1,7 +1,7 @@
 import { projects } from "@/data/projects";
 import ProjectDetail from "@/components/ProjectDetail";
 import { notFound } from "next/navigation";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import Navbar from "@/static/Navbar";
 import Footer from "@/static/Footer";
 
@@ -12,11 +12,11 @@ interface ProjectDetailPageProps {
 }
 
 // Fungsi generateMetadata untuk SEO dinamis
-export async function generateMetadata(
-  { params }: { params: { id: string } },
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  _parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
   const projectId = params.id;
   const project = projects.find((p) => p.id === projectId);
 
