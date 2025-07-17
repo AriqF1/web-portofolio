@@ -12,8 +12,7 @@ const Hero = () => {
     "Backend Developer",
     "Software Engineer",
   ];
-
-  const { theme } = useTheme();
+  useTheme();
 
   interface SocialLink {
     name: string;

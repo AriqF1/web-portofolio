@@ -10,8 +10,7 @@ const Projects = () => {
   const [activeFilter, setActiveFilter] = useState<string>("all");
   const [animateCards, setAnimateCards] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  const { theme } = useTheme();
+  useTheme();
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 3;

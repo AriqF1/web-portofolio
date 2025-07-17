@@ -1,7 +1,15 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Github, Linkedin, Mail, ArrowUp, Zap, Link2 ,Phone} from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  ArrowUp,
+  Zap,
+  Link2,
+  Phone,
+} from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 
 interface FooterProps {
@@ -14,7 +22,7 @@ const Footer: React.FC<FooterProps> = ({ customClass = "" }) => {
   );
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
 
-  const { theme } = useTheme();
+  useTheme();
 
   useEffect(() => {
     const handleScroll = (): void => {
@@ -247,7 +255,7 @@ const Footer: React.FC<FooterProps> = ({ customClass = "" }) => {
                 }}
               >
                 <Phone size={28} className="mr-2" />
-                Chat 
+                Chat
               </a>
             </div>
           </div>

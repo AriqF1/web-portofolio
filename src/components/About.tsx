@@ -16,8 +16,7 @@ import { useTheme } from "@/context/ThemeContext";
 const About = () => {
   const [activeTab, setActiveTab] = useState("skills");
   const [isVisible, setIsVisible] = useState(false);
-
-  const { theme } = useTheme();
+  useTheme();
 
   useEffect(() => {
     const observer = new IntersectionObserver(

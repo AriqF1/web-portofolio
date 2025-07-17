@@ -20,8 +20,7 @@ const Certifications = () => {
   );
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
-
-  const { theme } = useTheme();
+  useTheme();
 
   const filteredItems = certifications.filter(
     (cert) => cert.category === activeCategory
