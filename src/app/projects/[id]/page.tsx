@@ -14,7 +14,7 @@ interface ProjectDetailPageProps {
 // Fungsi generateMetadata untuk SEO dinamis
 export async function generateMetadata(
   { params }: ProjectDetailPageProps,
-  parent: ResolvingMetadata
+  _parent: ResolvingMetadata
 ): Promise<Metadata> {
   const projectId = params.id;
   const project = projects.find((p) => p.id === projectId);
