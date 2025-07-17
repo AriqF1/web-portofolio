@@ -50,7 +50,7 @@ const Hero = () => {
     }, 3000);
 
     return () => clearInterval(textInterval);
-  }, []);
+  }, [textOptions.length]);
 
   const getVar = (varName: string) => `var(--${varName})`;
 

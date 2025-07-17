@@ -30,6 +30,7 @@ interface Project {
 }
 
 const ProjectDetail = ({ project }: { project: Project }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   useTheme();
   const router = useRouter();
   if (!project) return null;
@@ -38,7 +39,6 @@ const ProjectDetail = ({ project }: { project: Project }) => {
     project.images && project.images.length > 0
       ? project.images
       : [project.image];
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const goToNextImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % allImages.length);

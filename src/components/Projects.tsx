@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Eye, Info, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Github, Eye, Info, ChevronLeft, ChevronRight } from "lucide-react";
 import { projects, Project } from "@/data/projects";
 import { useTheme } from "@/context/ThemeContext";
 

@@ -1,15 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import {
-  Github,
-  Linkedin,
-  Mail,
-  ArrowUp,
-  Zap,
-  Link2,
-  Phone,
-} from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUp, Link2, Phone } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 
 interface FooterProps {
@@ -17,10 +9,8 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ customClass = "" }) => {
-  const [currentYear, setCurrentYear] = useState<number>(
-    new Date().getFullYear()
-  );
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
+  const currentYear = new Date().getFullYear();
 
   useTheme();
 
@@ -104,7 +94,7 @@ const Footer: React.FC<FooterProps> = ({ customClass = "" }) => {
               className="leading-relaxed mb-6 text-base md:text-lg max-w-lg animate-fadeIn delay-200"
               style={{ color: getVar("text-secondary") }}
             >
-              I'm a passionate developer focused on crafting intuitive,
+              I&apos;m a passionate developer focused on crafting intuitive,
               high-performance digital experiences. I constantly learn and adapt
               to build innovative solutions that truly make an impact.
             </p>

@@ -22,13 +22,6 @@ import {
   SiVsco,
 } from "react-icons/si";
 
-const skillCategories = {
-  frontend: { name: "Frontend", icon: "💻" },
-  backend: { name: "Backend", icon: "⚙️" },
-  design: { name: "Design", icon: "🎨" },
-  tools: { name: "Tools", icon: "🛠️" },
-};
-
 export interface Skill {
   name: string;
   category: "frontend" | "backend" | "design" | "tools";

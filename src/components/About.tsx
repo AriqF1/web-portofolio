@@ -224,7 +224,7 @@ const About = () => {
               className="text-lg mb-6 leading-relaxed max-w-full lg:max-w-none"
               style={{ color: getVar("text-secondary") }}
             >
-              Hi there! I'm a passionate{" "}
+              Hi there! I&apos;m a passionate{" "}
               <strong style={{ color: getVar("text-primary") }}>
                 web developer
               </strong>{" "}
@@ -241,8 +241,8 @@ const About = () => {
               style={{ color: getVar("text-secondary") }}
             >
               My journey in web development started when I was in college, and
-              since then, I've worked on numerous projects ranging from small
-              business websites to complex web applications. I believe in
+              since then, I&apos;ve worked on numerous projects ranging from
+              small business websites to complex web applications. I believe in
               writing{" "}
               <strong style={{ color: getVar("text-primary") }}>
                 clean, maintainable code
