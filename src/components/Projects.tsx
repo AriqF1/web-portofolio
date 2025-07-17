@@ -2,15 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ExternalLink,
-  Github,
-  Eye,
-  Info,
-  X,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { Github, Eye, Info, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { projects, Project } from "@/data/projects";
 import { useTheme } from "@/context/ThemeContext";
 
@@ -156,8 +148,8 @@ const Projects = () => {
             style={{ color: getVar("text-secondary") }}
           >
             Here are some of my recent projects that showcase my skills and
-            experience. Each project reflects my passion for creating
-            intuitive and visually appealing web applications.
+            experience. Each project reflects my passion for creating intuitive
+            and visually appealing web applications.
           </p>
           <div
             className="mt-6 h-1.5 w-32 mx-auto rounded-full"

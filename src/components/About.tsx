@@ -8,8 +8,6 @@ import {
   ChevronRight,
   Award,
   Calendar,
-  Sparkles,
-  UserCheck,
 } from "lucide-react";
 import { skills, Skill } from "@/data/skills";
 import { education, Education } from "@/data/educations";

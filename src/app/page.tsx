@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Head from "next/head";
 import Navbar from "@/static/Navbar";
 import Footer from "@/static/Footer";
