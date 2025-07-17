@@ -30,7 +30,7 @@ interface Project {
 }
 
 const ProjectDetail = ({ project }: { project: Project }) => {
- const router = useRouter();
+  const router = useRouter();
   if (!project) return null;
 
   const { theme } = useTheme();
@@ -55,7 +55,7 @@ const ProjectDetail = ({ project }: { project: Project }) => {
 
   const handleGoBack = () => {
     router.back();
-  }
+  };
 
   return (
     <div
@@ -104,7 +104,7 @@ const ProjectDetail = ({ project }: { project: Project }) => {
 
         {/* Main Image*/}
         <div
-          className="mb-12 relative overflow-hidden rounded-3xl border-2 shadow-2xl group w-full"
+          className="mb-12 relative overflow-hidden rounded-3xl border-2 shadow-2xl group w-full hidden md:block"
           style={{
             borderColor: getVar("border-divider"),
             background: getVar("card-border"),
