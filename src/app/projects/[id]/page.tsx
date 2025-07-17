@@ -1,7 +1,7 @@
 import { projects } from "@/data/projects";
 import ProjectDetail from "@/components/ProjectDetail";
 import { notFound } from "next/navigation";
-import { Metadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 import Navbar from "@/static/Navbar";
 import Footer from "@/static/Footer";
 
@@ -11,9 +11,11 @@ interface ProjectDetailPageProps {
   };
 }
 
-export async function generateMetadata({
-  params,
-}: ProjectDetailPageProps): Promise<Metadata> {
+// Fungsi generateMetadata untuk SEO dinamis
+export async function generateMetadata(
+  { params }: ProjectDetailPageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const projectId = params.id;
   const project = projects.find((p) => p.id === projectId);
 
@@ -25,7 +27,6 @@ export async function generateMetadata({
       description: "The project you are looking for does not exist.",
     };
   }
-
   const metaDescription = project.fullDescription || project.description;
 
   return {
@@ -73,20 +74,24 @@ export async function generateMetadata({
   };
 }
 
+// Fungsi generateStaticParams untuk menghasilkan path statis saat build
 export async function generateStaticParams() {
   return projects.map((project) => ({
     id: project.id,
   }));
 }
 
+// Komponen halaman detail proyek
 const ProjectDetailPage = ({ params }: ProjectDetailPageProps) => {
   const projectId = params.id;
   const project = projects.find((p) => p.id === projectId);
 
+  // Jika proyek tidak ditemukan, tampilkan halaman 404
   if (!project) {
     notFound();
   }
 
+  // Helper untuk mendapatkan variabel CSS
   const getVar = (varName: string) => `var(--${varName})`;
 
   return (
@@ -97,12 +102,12 @@ const ProjectDetailPage = ({ params }: ProjectDetailPageProps) => {
         color: getVar("foreground"),
       }}
     >
-      <Navbar />
+      <Navbar /> {/* Komponen Navbar */}
       <main className="flex-grow pt-16 md:pt-24 lg:pt-28">
         {" "}
-        <ProjectDetail project={project} />
+        <ProjectDetail project={project} /> {/* Komponen detail proyek */}
       </main>
-      <Footer />
+      <Footer /> {/* Komponen Footer */}
     </div>
   );
 };
