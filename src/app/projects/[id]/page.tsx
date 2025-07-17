@@ -14,7 +14,8 @@ interface ProjectDetailPageProps {
 export async function generateMetadata({
   params,
 }: ProjectDetailPageProps): Promise<Metadata> {
-  const projectId = params.id;
+  const awaitedParams = await params;
+  const projectId = awaitedParams.id;
   const project = projects.find((p) => p.id === projectId);
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
