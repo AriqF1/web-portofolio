@@ -55,7 +55,7 @@ export const projects: Project[] = [
     title: "PoliCare - Healthcare Management System",
     description:
       "A drag-and-drop task management application with user authentication and real-time updates.",
-    image: "/api/placeholder/400/320",
+    image: "/images/policare/landing.png",
     tags: ["Laravel", "Filament", "MySQL", "CSS"],
     githubUrl: "https://github.com/AriqF1/web_poliklinik2",
     fullDescription:
@@ -73,9 +73,13 @@ export const projects: Project[] = [
     ],
     technologies: ["Laravel", "Filament", "MySQL", "CSS", "Tailwind CSS"],
     images: [
-      "/api/placeholder/800/500",
-      "/api/placeholder/800/500",
-      "/api/placeholder/800/500",
+      "/images/policare/landing.png",
+      "/images/policare/patient.png",
+      "/images/policare/poli-patient.png",
+      "/images/policare/doctor.png",
+      "/images/policare/poli-doctor.png",
+      "/images/policare/examination.png",
+      "/images/policare/history.png",
     ],
     challenges:
       "The main challenge I face is the flow of examinations from the doctor for the patient, and creating an interface that is not confusing for both the doctors and the patients using it.",
@@ -87,7 +91,7 @@ export const projects: Project[] = [
     title: "Premier HUB - Soccer Score Website",
     description:
       "A website displays score data from premier club soccer matches. data is retrieved using public fetch API",
-    image: "/api/placeholder/400/320",
+    image: "/images/premierhub/home.png",
     tags: ["React", "Tailwind CSS"],
     githubUrl: "https://github.com/AriqF1/web-soccer",
     fullDescription:
@@ -104,9 +108,9 @@ export const projects: Project[] = [
     ],
     technologies: ["React", "Tailwind CSS", "Netifly Hosting"],
     images: [
-      "/api/placeholder/800/500",
-      "/api/placeholder/800/500",
-      "/api/placeholder/800/500",
+      "/images/premierhub/home.png",
+      "/images/premierhub/standings.png",
+      "/images/premierhub/fixtures.png",
     ],
     challenges:
       "The main challenge of this course project was that at that time I was unable to fetch APIs using clean code principles, as well as access the APIs publicly.",
@@ -118,7 +122,7 @@ export const projects: Project[] = [
     title: "Belajar Pintar - Learning Website",
     description:
       "A learning website for students and college students with an interactive and dynamic design.",
-    image: "/api/placeholder/400/320",
+    image: "/images/belajar-pintar/dashboard.png",
     tags: ["React", "Tailwind CSS"],
     githubUrl: "https://github.com/AriqF1/web-belajar",
     fullDescription:
@@ -137,9 +141,11 @@ export const projects: Project[] = [
     ],
     technologies: ["React", "Tailwind CSS", "Json-server"],
     images: [
-      "/api/placeholder/800/500",
-      "/api/placeholder/800/500",
-      "/api/placeholder/800/500",
+      "/images/belajar-pintar/dashboard.png",
+      "/images/belajar-pintar/class.png",
+      "/images/belajar-pintar/quizz.png",
+      "/images/belajar-pintar/forums.png",
+      "/images/belajar-pintar/achievements.png",
     ],
     challenges:
       "The main challenge when I created this website was to make interesting features in the context of learning for users. And to think of ways in which this website can be easily developed in the future.",
