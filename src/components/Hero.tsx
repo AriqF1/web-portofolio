@@ -85,7 +85,7 @@ const Hero = () => {
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight">
-              Hi, I'm{" "}
+              Hi, I&apos;m{" "}
               <span
                 className={`text-transparent bg-clip-text drop-shadow-xl`}
                 style={{
