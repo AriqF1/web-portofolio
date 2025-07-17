@@ -215,7 +215,7 @@ const Hero = () => {
                 }}
               >
                 <Image
-                  src="/images/your-profile-image.jpg"
+                  src="/images/personal/about-hero.png"
                   alt="Ariq Farhan Profile"
                   fill
                   className="object-cover object-center"
