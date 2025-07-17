@@ -14,6 +14,7 @@ interface ProjectDetailPageProps {
 // Fungsi generateMetadata untuk SEO dinamis
 export async function generateMetadata(
   { params }: ProjectDetailPageProps,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   _parent: ResolvingMetadata
 ): Promise<Metadata> {
   const projectId = params.id;
