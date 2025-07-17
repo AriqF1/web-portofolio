@@ -30,10 +30,9 @@ interface Project {
 }
 
 const ProjectDetail = ({ project }: { project: Project }) => {
+  useTheme();
   const router = useRouter();
   if (!project) return null;
-
-  const { theme } = useTheme();
 
   const allImages =
     project.images && project.images.length > 0
