@@ -4,18 +4,22 @@ import { notFound } from "next/navigation";
 import Navbar from "@/static/Navbar";
 import Footer from "@/static/Footer";
 
+interface ProjectPageParams {
+  id: string;
+}
+
 export async function generateStaticParams() {
   return projects.map((project) => ({
     id: project.id,
   }));
 }
 
-export default function ProjectDetailPage({
+export default async function ProjectDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<ProjectPageParams>;
 }) {
-  const projectId = params.id;
+  const { id: projectId } = await params;
   const project = projects.find((p) => p.id === projectId);
 
   if (!project) {
