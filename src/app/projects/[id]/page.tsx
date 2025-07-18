@@ -5,13 +5,6 @@ import { Metadata } from "next";
 import Navbar from "@/static/Navbar";
 import Footer from "@/static/Footer";
 
-interface ProjectDetailPageProps {
-  params: {
-    id: string;
-  };
-}
-
-// Fungsi generateMetadata untuk SEO dinamis
 export async function generateMetadata({
   params,
 }: {
@@ -28,6 +21,7 @@ export async function generateMetadata({
       description: "The project you are looking for does not exist.",
     };
   }
+
   const metaDescription = project.fullDescription || project.description;
 
   return {
@@ -75,24 +69,28 @@ export async function generateMetadata({
   };
 }
 
-// Fungsi generateStaticParams untuk menghasilkan path statis saat build
+// ✅ generateStaticParams tetap aman
 export async function generateStaticParams() {
   return projects.map((project) => ({
     id: project.id,
   }));
 }
 
-// Komponen halaman detail proyek
+// ✅ Boleh pakai interface DI SINI SAJA
+interface ProjectDetailPageProps {
+  params: {
+    id: string;
+  };
+}
+
 const ProjectDetailPage = ({ params }: ProjectDetailPageProps) => {
   const projectId = params.id;
   const project = projects.find((p) => p.id === projectId);
 
-  // Jika proyek tidak ditemukan, tampilkan halaman 404
   if (!project) {
     notFound();
   }
 
-  // Helper untuk mendapatkan variabel CSS
   const getVar = (varName: string) => `var(--${varName})`;
 
   return (
@@ -103,12 +101,11 @@ const ProjectDetailPage = ({ params }: ProjectDetailPageProps) => {
         color: getVar("foreground"),
       }}
     >
-      <Navbar /> {/* Komponen Navbar */}
+      <Navbar />
       <main className="flex-grow pt-16 md:pt-24 lg:pt-28">
-        {" "}
-        <ProjectDetail project={project} /> {/* Komponen detail proyek */}
+        <ProjectDetail project={project} />
       </main>
-      <Footer /> {/* Komponen Footer */}
+      <Footer />
     </div>
   );
 };
