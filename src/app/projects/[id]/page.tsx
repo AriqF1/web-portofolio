@@ -69,21 +69,17 @@ export async function generateMetadata({
   };
 }
 
-// ✅ generateStaticParams tetap aman
 export async function generateStaticParams() {
   return projects.map((project) => ({
     id: project.id,
   }));
 }
 
-// ✅ Boleh pakai interface DI SINI SAJA
-interface ProjectDetailPageProps {
-  params: {
-    id: string;
-  };
-}
-
-const ProjectDetailPage = ({ params }: ProjectDetailPageProps) => {
+export default function ProjectDetailPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const projectId = params.id;
   const project = projects.find((p) => p.id === projectId);
 
@@ -108,6 +104,4 @@ const ProjectDetailPage = ({ params }: ProjectDetailPageProps) => {
       <Footer />
     </div>
   );
-};
-
-export default ProjectDetailPage;
+}
