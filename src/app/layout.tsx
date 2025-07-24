@@ -22,10 +22,10 @@ export const metadata: Metadata = {
     title: "Ariq Farhan Althaf | Portfolio",
     description:
       "Portofolio web development dan software engineering by Ariq Farhan Althaf.",
-    url: "https://www.farhanariq.my.id",
+    url: "https://farhanariq.my.id",
     images: [
       {
-        url: "https://www.farhanariq.my.id/og-image.png",
+        url: "https://farhanariq.my.id/og-image.png",
         width: 1200,
         height: 630,
         alt: "Ariq Farhan Althaf Portfolio",
@@ -44,7 +44,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Ariq Farhan Althaf",
-    url: "https://www.farhanariq.my.id",
+    url: "https://farhanariq.my.id",
     sameAs: [
       "https://www.linkedin.com/in/ariqfarhan-dev/",
       "https://github.com/AriqF1",
