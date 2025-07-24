@@ -80,6 +80,16 @@ export const certifications: Certification[] = [
     category: "course",
   },
   {
+    name: "React Js: Library Dashboard Website",
+    issuer: "Dunia Coding (Aditya Fakhri Riansyah)",
+    date: "July 2025",
+    url: "https://duniacoding.id/certificate/E-WO76-0006",
+    icon: "Code",
+    description:
+      "Building a library dashboard website using react js and styling with tailwindcss.",
+    category: "course",
+  },
+  {
     name: "Laravel: Donation App Website",
     issuer: "Dunia Coding (Yunus Febriansyah)",
     date: "March 2025",
@@ -156,6 +166,16 @@ export const certifications: Certification[] = [
     icon: "",
     description:
       "The strength of the mindset depends on us: to give up or to fully optimize it.",
+    category: "webinar",
+  },
+  {
+    name: "IDCamp Alumni Dialogue #5 | Prepare for the Future Workforce",
+    issuer: "Indosat Ooredoo Hutchison Digital Camp",
+    date: "July 2025",
+    url: "https://www.dicoding.com/events/9345",
+    icon: "",
+    description:
+      "Debunking the Myth of Intelligent Automation: Prepare for the Future Workforce",
     category: "webinar",
   },
 ];
