@@ -3,17 +3,17 @@ import { cn } from "@/lib/utils";
 
 export interface FloatingNavbarProps extends React.HTMLAttributes<HTMLElement> {
   /**
-   * The offset in pixels before the navbar starts hiding/showing
+   *
    * @default 50
    */
   scrollThreshold?: number;
   /**
-   * Whether to show the navbar when scrolling up
+   *
    * @default true
    */
   showOnScrollUp?: boolean;
   /**
-   * Whether to hide the navbar when scrolling down
+   *
    * @default true
    */
   hideOnScrollDown?: boolean;
@@ -56,15 +56,32 @@ export function FloatingNavbar({
   return (
     <nav
       className={cn(
-        "fixed left-1/2 bottom-4 z-50 transform-gpu rounded-full border bg-background/80 shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out dark:border-neutral-800 dark:bg-neutral-950/75",
-        "w-[90%] -translate-x-1/2 px-4 py-2 sm:w-auto sm:px-8 sm:py-3 sm:bottom-6",
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0",
+        "fixed left-1/2 bottom-6 z-50 -translate-x-1/2",
+
+        "rounded-2xl border border-gray-200/50 bg-white/90 shadow-2xl backdrop-blur-xl",
+        "dark:border-gray-700/50 dark:bg-gray-900/90",
+
+        "w-[90%] max-w-md px-3 py-2.5",
+        "sm:w-auto sm:px-6 sm:py-3",
+        "md:px-8 md:py-3.5",
+
+        "transform-gpu transition-all duration-500 ease-out",
+        "hover:shadow-3xl hover:scale-105",
+
+        isVisible
+          ? "translate-y-0 opacity-100 scale-100"
+          : "translate-y-16 opacity-0 scale-95",
+
+        "before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-blue-500/5 before:to-purple-500/5 before:opacity-0 before:transition-opacity before:duration-300",
+        "hover:before:opacity-100",
 
         className
       )}
       {...props}
     >
-      {children}
+      <div className="flex items-center justify-center space-x-1 sm:space-x-2">
+        {children}
+      </div>
     </nav>
   );
 }

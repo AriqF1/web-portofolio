@@ -168,7 +168,7 @@ const Hero = () => {
               </p>
               <div className="flex space-x-5 justify-center md:justify-start">
                 {socialLinks.map((link, index) => {
-                  const { IconComponent } = link; // Ambil komponen ikon
+                  const { IconComponent } = link;
                   return (
                     <a
                       key={index}

@@ -2,7 +2,7 @@ import { projects } from "@/data/projects";
 import ProjectDetail from "@/components/ProjectDetail";
 import { notFound } from "next/navigation";
 import Navbar from "@/static/Navbar";
-import Footer from "@/static/Footer";
+import Footer from "@/static/Footer/Footer";
 
 interface ProjectPageParams {
   id: string;
