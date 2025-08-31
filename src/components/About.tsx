@@ -124,7 +124,7 @@ const About = () => {
               style={{ borderColor: getVar("card-border") }}
             >
               <Image
-                src="/images/personal/about.png"
+                src="/images/personal/about.webp"
                 alt="Ariq Farhan Althaf Profile"
                 fill
                 className="object-cover object-center"

@@ -60,7 +60,7 @@ const Hero = () => {
         color: getVar("foreground"),
       }}
     >
-      <div className="absolute inset-0 z-0 opacity-20">
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none select-none">
         <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-blue-700 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
         <div className="absolute top-1/2 right-1/4 w-80 h-80 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
         <div className="absolute bottom-1/4 left-1/2 w-80 h-80 bg-pink-700 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
@@ -82,13 +82,7 @@ const Hero = () => {
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight">
-              Hi, I&apos;m{" "}
-              <span
-                className={`text-transparent bg-clip-text drop-shadow-xl`}
-                style={{ color: getVar("text-primary") }}
-              >
-                Ariq Farhan
-              </span>
+              Hi, I&apos;m <span className="text-primary">Ariq Farhan</span>
             </h1>
 
             <div className="h-16 flex justify-center md:justify-start items-center">
@@ -195,7 +189,7 @@ const Hero = () => {
           </div>
 
           <div className="hidden md:flex md:w-1/2 justify-center md:justify-end mt-10 md:mt-0 animate-slideInRight">
-            <div className="relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
+            <div className="relative w-72 h-72 h-auto aspect-square md:w-80 md:h-80 lg:w-96 lg:h-96">
               <div className="absolute inset-2 rounded-full border-4 border-blue-500 opacity-70 animate-spin-slow-reverse"></div>
               <div
                 className="group absolute inset-8 rounded-full overflow-hidden border-4 bg-neutral-800 flex items-center justify-center shadow-2xl"
@@ -205,7 +199,7 @@ const Hero = () => {
                 }}
               >
                 <Image
-                  src="/images/personal/about-hero.jpg"
+                  src="/images/personal/about-hero.webp"
                   alt="Ariq Farhan Profile"
                   fill
                   className="object-cover object-center 
