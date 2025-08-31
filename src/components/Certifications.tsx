@@ -50,6 +50,11 @@ const Certifications = () => {
     }
   };
 
+  const totalCertifications = (typeCertification: string) => {
+    return certifications.filter((cert) => cert.category === typeCertification)
+      .length;
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -164,7 +169,9 @@ const Certifications = () => {
               onClick={() => setActiveCategory("course")}
             >
               <AwardIcon size={18} className="mr-2" />
-              Certifications
+              <span className="hidden lg:inline">
+                Course({totalCertifications("course")})
+              </span>
             </button>
             <button
               className={`py-3 px-6 rounded-lg font-semibold text-base flex items-center justify-center flex-1 transition-all duration-300 transform hover:scale-105 cursor-pointer ${
@@ -182,7 +189,10 @@ const Certifications = () => {
               }}
               onClick={() => setActiveCategory("webinar")}
             >
-              <MonitorPlay size={18} className="mr-2" /> Webinars
+              <MonitorPlay size={18} className="mr-2" />{" "}
+              <span className="hidden lg:inline">
+                Webinar({totalCertifications("webinar")})
+              </span>
             </button>
           </div>
         </div>

@@ -1,230 +1,158 @@
 "use client";
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, Download } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
+import { FloatingNavbar } from "@/components/ui/floating-navbar";
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const { theme, toggleTheme } = useTheme();
+  const [activeSection, setActiveSection] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const getVar = (varName: string) => `var(--${varName})`;
+  useEffect(() => {
+    const sections = ["about", "projects", "contact"];
+
+    const observerOptions = {
+      threshold: 0.3,
+      rootMargin: "-20% 0px -70% 0px",
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => {
+      const element = document.getElementById(section);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const navItems = [
+    { href: "/#about", label: "About", id: "about" },
+    { href: "/#projects", label: "Projects", id: "projects" },
+    { href: "/#contact", label: "Contact", id: "contact" },
+  ];
 
   return (
-    <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "" : "bg-transparent"
-      }`}
-      style={{
-        backgroundColor: isScrolled ? getVar("card-bg") : "transparent",
-        borderBottom: isScrolled
-          ? `1px solid ${getVar("border-divider")}`
-          : "none",
-        boxShadow: isScrolled
-          ? "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
-          : "none",
-      }}
+    <FloatingNavbar
+      className={cn(
+        isScrolled ? "backdrop-blur-2xl" : "backdrop-blur-xl",
+        isScrolled
+          ? "shadow-2xl border-gray-300/60 dark:border-gray-600/60"
+          : "shadow-xl border-gray-200/40 dark:border-gray-700/40",
+
+        "bg-gradient-to-r from-white/90 via-white/95 to-white/90",
+        "dark:from-gray-900/90 dark:via-gray-900/95 dark:to-gray-900/90"
+      )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="text-2xl font-bold">
-              <span
-                className={`text-transparent bg-clip-text`}
-                style={{
-                  color: getVar("text-primary"),
-                }}
-              >
-                Farhan Ariq
-              </span>
-            </Link>
-          </div>
-
-          {/* Desktop menu */}
-          <div className="hidden md:flex items-center space-x-8">
+      <div className="flex items-center justify-center gap-2 w-full">
+        {/* Navigation Links */}
+        <div className="flex items-center gap-1 sm:gap-2">
+          {navItems.map((item) => (
             <Link
-              href="/#about"
-              className={`transition-colors duration-200 text-lg font-medium hover:opacity-80`}
-              style={{ color: getVar("text-primary") }}
-            >
-              About
-            </Link>
-            <Link
-              href="/#projects"
-              className={`transition-colors duration-200 text-lg font-medium hover:opacity-80`}
-              style={{ color: getVar("text-primary") }}
-            >
-              Projects
-            </Link>
-            <Link
-              href="/#contact"
-              className={`transition-colors duration-200 text-lg font-medium hover:opacity-80`}
-              style={{ color: getVar("text-primary") }}
-            >
-              Contact
-            </Link>
-            <a
-              href="/resume.pdf"
-              className={`px-5 py-2 rounded-lg border transition-all duration-200 font-medium hover:opacity-80`}
-              style={{
-                borderColor: getVar("border-divider"),
-                color: getVar("text-primary"),
-                backgroundColor: getVar("card-border"),
-              }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Resume
-            </a>
+              key={item.id}
+              href={item.href}
+              className={cn(
+                "relative px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl font-medium",
+                "text-xs sm:text-sm transition-all duration-300 ease-out",
+                "hover:scale-105 active:scale-95 group overflow-hidden",
 
-            <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-full shadow-md transition-colors duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2`}
+                activeSection === item.id
+                  ? "text-white shadow-lg scale-105"
+                  : "text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+              )}
               style={{
-                backgroundColor: getVar("button-secondary-bg"),
-                color: getVar("foreground"),
+                background:
+                  activeSection === item.id
+                    ? "linear-gradient(135deg, #3b82f6, #1d4ed8)"
+                    : "transparent",
               }}
-              aria-label={
-                theme === "light"
-                  ? "Switch to dark mode"
-                  : "Switch to light mode"
-              }
             >
-              {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
-            </button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-full shadow-md transition-colors duration-300 mr-4`}
-              style={{
-                backgroundColor: getVar("button-secondary-bg"),
-                color: getVar("foreground"),
-              }}
-              aria-label={
-                theme === "light"
-                  ? "Switch to dark mode"
-                  : "Switch to light mode"
-              }
-            >
-              {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
-            </button>
-
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2`}
-              style={
-                {
-                  color: getVar("foreground"),
-                  "--tw-ring-color": getVar("border-divider"),
-                  "--tw-ring-offset-color": isScrolled
-                    ? getVar("card-bg")
-                    : getVar("background"),
-                } as React.CSSProperties
-              }
-              aria-label="Toggle navigation menu"
-            >
-              <svg
-                className="h-7 w-7"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {isMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
+              <div
+                className={cn(
+                  "absolute inset-0 rounded-xl transition-all duration-300",
+                  activeSection === item.id
+                    ? "bg-gradient-to-r from-blue-500/20 to-blue-600/20 opacity-100"
+                    : "bg-gradient-to-r from-blue-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100"
                 )}
-              </svg>
-            </button>
-          </div>
+              />
+
+              <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              </div>
+
+              <span className="relative z-10">{item.label}</span>
+
+              {activeSection === item.id && (
+                <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-white rounded-full animate-pulse" />
+              )}
+            </Link>
+          ))}
+        </div>
+
+        <div className="w-px h-6 bg-gradient-to-b from-transparent via-gray-300 to-transparent dark:via-gray-600 mx-2" />
+
+        {/* Action Buttons */}
+        <div className="flex items-center gap-2">
+          {/* Resume Button */}
+          <a
+            href="/resume.pdf"
+            className="group relative flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all duration-300 ease-out hover:scale-105 active:scale-95 overflow-hidden border-1 border-solid"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {/* Background shimmer */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+
+            <Download
+              size={16}
+              className="relative z-10 transition-transform duration-300 group-hover:rotate-12"
+            />
+            <span className="relative z-10 hidden sm:inline">Resume</span>
+
+            <div className="absolute inset-0 rounded-xl bg-emerald-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </a>
+
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="group relative p-2 sm:p-2.5 rounded-xl transition-all duration-300 ease-out hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 focus:ring-offset-transparent overflow-hidden bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 "
+            aria-label={
+              theme === "light" ? "Switch to dark mode" : "Switch to light mode"
+            }
+          >
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+            <div className="relative z-10 transition-transform duration-500 group-hover:rotate-180">
+              {theme === "light" ? (
+                <Moon size={18} className="sm:w-5 sm:h-5" />
+              ) : (
+                <Sun size={18} className="sm:w-5 sm:h-5" />
+              )}
+            </div>
+
+            <div className="absolute inset-0 rounded-xl bg-blue-500/30 opacity-0 group-active:opacity-50 transition-opacity duration-150" />
+          </button>
         </div>
       </div>
-
-      {/* Mobile menu */}
-      {isMenuOpen && (
-        <div
-          className={`md:hidden shadow-lg pb-4`}
-          style={{ backgroundColor: getVar("card-bg") }}
-        >
-          <div className="px-2 pt-2 space-y-1 sm:px-3">
-            <Link
-              href="/#about"
-              className={`block px-3 py-2 rounded-md transition-colors duration-200 text-base font-medium hover:opacity-80`}
-              style={{
-                color: getVar("text-primary"),
-                backgroundColor: getVar("card-border"),
-              }}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              href="/#projects"
-              className={`block px-3 py-2 rounded-md transition-colors duration-200 text-base font-medium hover:opacity-80`}
-              style={{
-                color: getVar("text-primary"),
-                backgroundColor: getVar("card-border"),
-              }}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Projects
-            </Link>
-            <Link
-              href="/#contact"
-              className={`block px-3 py-2 rounded-md transition-colors duration-200 text-base font-medium hover:opacity-80`}
-              style={{
-                color: getVar("text-primary"),
-                backgroundColor: getVar("card-border"),
-              }}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact
-            </Link>
-            <a
-              href="/resume.pdf"
-              className={`block px-3 py-2 rounded-md border transition-all duration-200 text-base font-medium mt-2 hover:opacity-80`}
-              style={{
-                borderColor: getVar("border-divider"),
-                color: getVar("text-primary"),
-                backgroundColor: getVar("card-border"),
-              }}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Resume
-            </a>
-          </div>
-        </div>
-      )}
-    </nav>
+    </FloatingNavbar>
   );
 };
 

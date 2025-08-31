@@ -1,9 +1,8 @@
-"use client"; 
+"use client";
 import { useState } from "react";
-import InteractiveLoader from "@/components/loading/InteractiveLoader"; 
-
+import InteractiveLoader from "@/components/loading/InteractiveLoader";
 import Navbar from "@/static/Navbar";
-import Footer from "@/static/Footer";
+import Footer from "@/static/Footer/Footer";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
@@ -11,17 +10,19 @@ import Certifications from "@/components/Certifications";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-  const [showContent, setShowContent] = useState(false); 
-
+  const [showContent, setShowContent] = useState(false);
   const handleLoaderComplete = () => {
     setIsLoading(false);
-    setShowContent(true); 
+    setShowContent(true);
   };
 
   return (
     <>
       {isLoading && (
-        <InteractiveLoader onComplete={() => handleLoaderComplete()} duration={4000} /> 
+        <InteractiveLoader
+          onComplete={() => handleLoaderComplete()}
+          duration={3000}
+        />
       )}
 
       <div
@@ -29,10 +30,7 @@ export default function Home() {
           showContent ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
-        <header>
-          <Navbar />
-        </header>
-
+        <Navbar />
         <main>
           <section aria-label="Hero Section">
             <Hero />
@@ -54,4 +52,4 @@ export default function Home() {
       </div>
     </>
   );
-};
+}
