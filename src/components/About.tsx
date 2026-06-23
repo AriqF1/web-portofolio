@@ -32,39 +32,39 @@ const About = () => {
           {/* Left Column: Narrative (7 columns) */}
           <div className="lg:col-span-7 flex flex-col items-start">
             <div className="flex items-center space-x-3 mb-8">
-              <div className="w-8 h-[1px] bg-neutral-900 dark:bg-neutral-50" />
-              <h2 className="text-sm font-medium tracking-wider uppercase text-neutral-500 dark:text-neutral-400">
-                Behind the Code
+              <div className="w-8 h-px bg-neutral-900 dark:bg-neutral-50" />
+              <h2 className="text-xs font-semibold tracking-[0.2em] uppercase text-neutral-500 dark:text-neutral-400">
+                About Me
               </h2>
             </div>
 
-            <h3 className="text-3xl md:text-4xl font-bold leading-tight tracking-tight mb-8">
-              I build systems that make sense—both under the hood and on the
-              screen.
+            <h3 className="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50 max-w-3xl mb-8">
+              Building scalable digital products with a strong focus on
+              performance, usability, and clean architecture.
             </h3>
 
-            <div className="space-y-6 text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-2xl">
+            <div className="space-y-6 text-base md:text-lg leading-8 text-neutral-600 dark:text-neutral-400 max-w-2xl">
               <p>
-                I'm an Informatics Engineering student at UDINUS in Semarang,
-                balancing my academic journey with building real-world software.
-                My focus is on full-stack development, bridging the gap between
-                robust, scalable backend architectures and fluid user
-                interfaces.
+                I'm Ariq Farhan, an Informatics Engineering student at UDINUS
+                based in Semarang, Indonesia. I specialize in full-stack web
+                development, with a strong interest in designing scalable
+                backend systems and crafting modern, user-friendly interfaces.
               </p>
+
               <p>
-                Recently, I've been heavily invested in developing
-                SIAPOL-JATENG, a reporting platform utilizing AI text analysis,
-                drawing on experience gained during my time with the Central
-                Java Regional Police (Polda Jateng) TIK unit. I enjoy tackling
-                complex logic with Laravel and bringing it to life in the
-                browser using React and Next.js.
+                Throughout my academic and professional journey, I've worked on
+                projects ranging from management systems to AI-powered
+                applications. One of my notable projects is SIAPOL-JATENG, a
+                community emergency reporting platform that integrates
+                artificial intelligence for report analysis and Telegram for
+                real-time officer notifications.
               </p>
+
               <p>
-                When I step away from the keyboard, I apply the same mindset of
-                incremental improvement to my offline life. Whether I'm at the
-                gym, tuning my Honda CB150R, or editing video content, I
-                appreciate the process of taking something raw and refining it
-                into something powerful.
+                My primary toolkit includes Laravel, React, Next.js, TypeScript,
+                and modern database technologies. I enjoy transforming complex
+                requirements into reliable solutions while maintaining clean
+                code, maintainability, and excellent user experience.
               </p>
             </div>
 
