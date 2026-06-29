@@ -39,32 +39,34 @@ const About = () => {
             </div>
 
             <h3 className="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50 max-w-3xl mb-8">
-              Building scalable digital products with a strong focus on
-              performance, usability, and clean architecture.
+              Building scalable web applications with focus on backend systems,
+              clean architecture, and exceptional user experience.
             </h3>
 
             <div className="space-y-6 text-base md:text-lg leading-8 text-neutral-600 dark:text-neutral-400 max-w-2xl">
               <p>
-                I'm Ariq Farhan, an Informatics Engineering student at UDINUS
-                based in Semarang, Indonesia. I specialize in full-stack web
-                development, with a strong interest in designing scalable
-                backend systems and crafting modern, user-friendly interfaces.
+                I'm Ariq Farhan, a Full Stack Developer with a strong focus on
+                Backend Development. I enjoy building secure, scalable, and
+                maintainable web applications while creating modern, responsive,
+                and intuitive user interfaces.
               </p>
 
               <p>
-                Throughout my academic and professional journey, I've worked on
-                projects ranging from management systems to AI-powered
-                applications. One of my notable projects is SIAPOL-JATENG, a
-                community emergency reporting platform that integrates
-                artificial intelligence for report analysis and Telegram for
-                real-time officer notifications.
+                Through academic projects, professional experience, and
+                continuous learning, I've developed applications ranging from
+                management systems to AI-powered platforms. One of my notable
+                projects is
+                <strong> SIAPOL-JATENG</strong>, a web-based emergency reporting
+                system that integrates artificial intelligence for report
+                analysis and Telegram Bot for real-time officer notifications.
               </p>
 
               <p>
-                My primary toolkit includes Laravel, React, Next.js, TypeScript,
-                and modern database technologies. I enjoy transforming complex
-                requirements into reliable solutions while maintaining clean
-                code, maintainability, and excellent user experience.
+                My primary tech stack includes Golang, Laravel, React, Next.js,
+                TypeScript, PostgreSQL, and MySQL. I enjoy solving complex
+                problems, designing scalable system architectures, and
+                continuously learning new technologies to build software that
+                delivers real value.
               </p>
             </div>
 
