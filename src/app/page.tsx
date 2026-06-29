@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import InteractiveLoader from "@/components/loading/InteractiveLoader";
 import Navbar from "@/static/Navbar";
@@ -11,6 +12,7 @@ import Certifications from "@/components/Certifications";
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
+
   const handleLoaderComplete = () => {
     setIsLoading(false);
     setShowContent(true);
@@ -19,36 +21,26 @@ export default function Home() {
   return (
     <>
       {isLoading && (
-        <InteractiveLoader
-          onComplete={() => handleLoaderComplete()}
-          duration={3000}
-        />
+        <InteractiveLoader onComplete={handleLoaderComplete} duration={2800} />
       )}
 
       <div
-        className={`min-h-screen bg-neutral-950 text-neutral-300 transition-opacity duration-1000 ease-in ${
-          showContent ? "opacity-100" : "opacity-0 pointer-events-none"
+        className={`flex flex-col min-h-screen transition-opacity duration-1000 ease-out ${
+          showContent
+            ? "opacity-100"
+            : "opacity-0 h-screen overflow-hidden pointer-events-none"
         }`}
       >
         <Navbar />
-        <main>
-          <section aria-label="Hero Section">
-            <Hero />
-          </section>
-          <section aria-label="About Section" id="about">
-            <About />
-          </section>
-          <section aria-label="Projects Section" id="projects">
-            <Projects />
-          </section>
-          <section aria-label="Certifications Section" id="certifications">
-            <Certifications />
-          </section>
+
+        <main className="flex-grow">
+          <Hero />
+          <About />
+          <Projects />
+          <Certifications />
         </main>
 
-        <footer>
-          <Footer />
-        </footer>
+        <Footer />
       </div>
     </>
   );

@@ -21,7 +21,7 @@ export const projects: Project[] = [
     title: "Student Dashboard - University Management System",
     description:
       "A fully responsive student platform built with React.js and integrated with json-server.",
-    image: "/images/student-website/dashboard.webp",
+    image: "/images/student-website/thumbnail.png",
     tags: ["React", "Tailwind CSS"],
     githubUrl: "https://github.com/AriqF1/web-mhs",
     fullDescription:
@@ -38,13 +38,7 @@ export const projects: Project[] = [
       "Mobile-responsive design for on-the-go access",
     ],
     technologies: ["React", "Tailwind CSS", "Node.js", "Chart.js"],
-    images: [
-      "/images/student-website/dashboard.webp",
-      "/images/student-website/students.webp",
-      "/images/student-website/studyprograms.webp",
-      "/images/student-website/lessons.webp",
-      "/images/student-website/lecturers.webp",
-    ],
+    images: ["/images/student-website/thumbnail.png"],
     challenges:
       "The main challenge I faced in this project was creating an interactive and responsive website design. I was also quite unfamiliar with json-server at first.",
     solutions:
@@ -55,7 +49,7 @@ export const projects: Project[] = [
     title: "PoliCare - Healthcare Management System",
     description:
       "A drag-and-drop task management application with user authentication and real-time updates.",
-    image: "/images/policare/landing.webp",
+    image: "/images/policare/thumbnail.png",
     tags: ["Laravel", "Filament", "MySQL", "CSS"],
     githubUrl: "https://github.com/AriqF1/web_poliklinik2",
     fullDescription:
@@ -72,15 +66,7 @@ export const projects: Project[] = [
       "Responsive design for desktop and mobile access",
     ],
     technologies: ["Laravel", "Filament", "MySQL", "CSS", "Tailwind CSS"],
-    images: [
-      "/images/policare/landing.webp",
-      "/images/policare/patient.webp",
-      "/images/policare/poli-patient.webp",
-      "/images/policare/doctor.webp",
-      "/images/policare/poli-doctor.webp",
-      "/images/policare/examination.webp",
-      "/images/policare/history.webp",
-    ],
+    images: ["/images/policare/thumbnail.png"],
     challenges:
       "The main challenge I face is the flow of examinations from the doctor for the patient, and creating an interface that is not confusing for both the doctors and the patients using it.",
     solutions:
@@ -91,7 +77,7 @@ export const projects: Project[] = [
     title: "Premier HUB - Soccer Score Website",
     description:
       "A website displays score data from premier club soccer matches. data is retrieved using public fetch API",
-    image: "/images/premierhub/home.webp",
+    image: "/images/premierhub/thumbnail.png",
     tags: ["React", "Tailwind CSS"],
     githubUrl: "https://github.com/AriqF1/web-soccer",
     fullDescription:
@@ -107,11 +93,7 @@ export const projects: Project[] = [
       "Optimized image loading for fast page loads",
     ],
     technologies: ["React", "Tailwind CSS", "Netifly Hosting"],
-    images: [
-      "/images/premierhub/home.webp",
-      "/images/premierhub/standings.webp",
-      "/images/premierhub/fixtures.webp",
-    ],
+    images: ["/images/premierhub/thumbnail.png"],
     challenges:
       "The main challenge of this course project was that at that time I was unable to fetch APIs using clean code principles, as well as access the APIs publicly.",
     solutions:
@@ -122,7 +104,7 @@ export const projects: Project[] = [
     title: "Belajar Pintar - Learning Website",
     description:
       "A learning website for students and college students with an interactive and dynamic design.",
-    image: "/images/belajar-pintar/dashboard.webp",
+    image: "/images/belajar-pintar/thumbnail.jpg",
     tags: ["React", "Tailwind CSS"],
     githubUrl: "https://github.com/AriqF1/web-belajar",
     fullDescription:
@@ -140,13 +122,7 @@ export const projects: Project[] = [
       "Achievements and progress tracking",
     ],
     technologies: ["React", "Tailwind CSS", "Json-server"],
-    images: [
-      "/images/belajar-pintar/dashboard.webp",
-      "/images/belajar-pintar/class.webp",
-      "/images/belajar-pintar/quizz.webp",
-      "/images/belajar-pintar/forums.webp",
-      "/images/belajar-pintar/achievements.webp",
-    ],
+    images: ["/images/belajar-pintar/thumbnail.jpg"],
     challenges:
       "The main challenge when I created this website was to make interesting features in the context of learning for users. And to think of ways in which this website can be easily developed in the future.",
     solutions:

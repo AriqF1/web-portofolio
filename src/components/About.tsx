@@ -1,463 +1,155 @@
 "use client";
-import { useState, useEffect } from "react";
+
 import Image from "next/image";
-import {
-  Briefcase,
-  GraduationCap,
-  Code,
-  ChevronRight,
-  Award,
-  Calendar,
-} from "lucide-react";
-import { skills, Skill } from "@/data/skills";
-import { education, Education } from "@/data/educations";
-import { useTheme } from "@/context/ThemeContext";
+import { ArrowUpRight, Code2, Database } from "lucide-react";
+import { skills } from "@/data/skills";
 
 const About = () => {
-  const [activeTab, setActiveTab] = useState("skills");
-  const [isVisible, setIsVisible] = useState(false);
-  useTheme();
+  const featuredSkillNames = [
+    "Laravel",
+    "React.js",
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "SQL",
+    "Git",
+  ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-      }
-    );
-
-    const section = document.getElementById("about");
-    if (section) {
-      observer.observe(section);
-    }
-
-    return () => {
-      if (section) {
-        observer.unobserve(section);
-      }
-    };
-  }, []);
-
-  const getVar = (varName: string) => `var(--${varName})`;
-
-  const skillCategories = {
-    frontend: { name: "Frontend", icon: <Code size={20} /> },
-    backend: { name: "Backend", icon: <Code size={20} /> },
-    tools: { name: "Tools", icon: <Code size={20} /> },
-  };
+  const topSkills = skills.filter((skill) =>
+    featuredSkillNames.includes(skill.name),
+  );
 
   return (
     <section
       id="about"
-      className="py-8 md:py-12 relative overflow-hidden"
-      style={{
-        backgroundColor: getVar("background"),
-        color: getVar("foreground"),
-      }}
+      className="relative py-24 md:py-32 overflow-hidden bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50"
     >
-      <div className="absolute inset-0 z-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-700 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-        <div className="absolute top-1/2 right-1/4 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-1/4 left-1/2 w-72 h-72 bg-pink-700 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
-      </div>
+      {/* Subtle asymmetric background blur */}
+      <div className="absolute top-1/2 left-0 -ml-32 w-[500px] h-[500px] bg-gradient-to-tr from-neutral-200/40 to-transparent dark:from-neutral-900/40 rounded-full blur-3xl opacity-50 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div
-          className={`text-center mb-12 md:mb-16 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          <span
-            className="inline-block px-3 py-1 rounded-full text-sm font-medium mb-4 border shadow-md"
-            style={{
-              background: getVar("card-border"),
-              borderColor: getVar("border-divider"),
-              color: getVar("text-secondary"),
-            }}
-          >
-            🚀 About Me
-          </span>
-          <h2
-            className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight"
-            style={{ color: getVar("text-primary") }}
-          >
-            Dive Deeper Into My{" "}
-            <span
-              className="text-transparent bg-clip-text"
-              style={{ color: getVar("button-primary-bg") }}
-            >
-              Journey
-            </span>
-          </h2>
-          <p
-            className="mt-4 text-lg max-w-2xl mx-auto"
-            style={{ color: getVar("text-secondary") }}
-          >
-            Discover my passion, expertise, and educational background that
-            shape my development journey.
-          </p>
-          <div
-            className="mt-6 h-1.5 w-32 mx-auto rounded-full"
-            style={{ background: getVar("button-primary-bg") }}
-          ></div>
-        </div>
-
-        {/* Main Content Layout */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-stretch gap-12 lg:gap-16">
-          <div
-            className={`w-full lg:w-1/3 flex flex-col items-center lg:items-start transition-all duration-1000 delay-300 ${
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-10"
-            }`}
-          >
-            {/* Profile Image */}
-            <div
-              className="relative w-72 h-72 md:w-80 md:h-80 rounded-xl overflow-hidden border-4 shadow-2xl flex-shrink-0"
-              style={{ borderColor: getVar("card-border") }}
-            >
-              <Image
-                src="/images/personal/about.webp"
-                alt="Ariq Farhan Althaf Profile"
-                fill
-                className="object-cover object-center"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                priority
-              />
-              <div
-                className="absolute inset-0 rounded-full ring-4 ring-offset-4 animate-pulse-fade"
-                style={
-                  {
-                    "--tw-ring-color": getVar("button-primary-bg"),
-                    "--tw-ring-offset-color": getVar("background"),
-                  } as React.CSSProperties
-                }
-              ></div>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12">
+          {/* Left Column: Narrative (7 columns) */}
+          <div className="lg:col-span-7 flex flex-col items-start">
+            <div className="flex items-center space-x-3 mb-8">
+              <div className="w-8 h-px bg-neutral-900 dark:bg-neutral-50" />
+              <h2 className="text-xs font-semibold tracking-[0.2em] uppercase text-neutral-500 dark:text-neutral-400">
+                About Me
+              </h2>
             </div>
 
-            {/* Stats Card */}
-            <div
-              className="mt-12 w-full max-w-xs md:max-w-md rounded-xl p-6 shadow-lg border flex flex-col gap-4"
-              style={{
-                backgroundColor: getVar("card-bg"),
-                borderColor: getVar("border-divider"),
-              }}
-            >
-              <div
-                className="flex items-center"
-                style={{ color: getVar("text-primary") }}
-              >
-                <Briefcase size={24} className="text-blue-400 mr-3" />{" "}
-                <div>
-                  <h4 className="font-semibold text-lg">
-                    3+ Projects Completed
-                  </h4>
-                  <p
-                    className="text-sm"
-                    style={{ color: getVar("text-secondary") }}
-                  >
-                    Successfully created the project for experience.
-                  </p>
+            <h3 className="text-2xl md:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50 max-w-3xl mb-8">
+              Building scalable web applications with focus on backend systems,
+              clean architecture, and exceptional user experience.
+            </h3>
+
+            <div className="space-y-6 text-base md:text-lg leading-8 text-neutral-600 dark:text-neutral-400 max-w-2xl">
+              <p>
+                I'm Ariq Farhan, a Full Stack Developer with a strong focus on
+                Backend Development. I enjoy building secure, scalable, and
+                maintainable web applications while creating modern, responsive,
+                and intuitive user interfaces.
+              </p>
+
+              <p>
+                Through academic projects, professional experience, and
+                continuous learning, I've developed applications ranging from
+                management systems to AI-powered platforms. One of my notable
+                projects is
+                <strong> SIAPOL-JATENG</strong>, a web-based emergency reporting
+                system that integrates artificial intelligence for report
+                analysis and Telegram Bot for real-time officer notifications.
+              </p>
+
+              <p>
+                My primary tech stack includes Golang, Laravel, React, Next.js,
+                TypeScript, PostgreSQL, and MySQL. I enjoy solving complex
+                problems, designing scalable system architectures, and
+                continuously learning new technologies to build software that
+                delivers real value.
+              </p>
+            </div>
+
+            <div className="mt-12 w-full max-w-2xl border-t border-neutral-200 dark:border-neutral-800 pt-8">
+              <h4 className="text-sm font-semibold uppercase tracking-wider mb-6 text-neutral-900 dark:text-neutral-100">
+                Current & Past Focus
+              </h4>
+              <div className="space-y-4">
+                <div className="flex justify-between items-baseline group cursor-pointer">
+                  <span className="font-medium group-hover:text-neutral-500 transition-colors">
+                    Developer & Creator, SIAPOL-JATENG
+                  </span>
+                  <span className="text-sm text-neutral-400 font-mono">
+                    Present
+                  </span>
                 </div>
-              </div>
-              <div
-                className="flex items-center"
-                style={{ color: getVar("text-primary") }}
-              >
-                <Award size={24} className="text-yellow-400 mr-3" />{" "}
-                <div>
-                  <h4 className="font-semibold text-lg">
-                    1+ Years of Experience
-                  </h4>
-                  <p
-                    className="text-sm"
-                    style={{ color: getVar("text-secondary") }}
-                  >
-                    Passionately developing web solutions.
-                  </p>
+                <div className="flex justify-between items-baseline group cursor-pointer">
+                  <span className="font-medium group-hover:text-neutral-500 transition-colors">
+                    Software Engineering Intern, Polda Jateng
+                  </span>
+                  <span className="text-sm text-neutral-400 font-mono">
+                    Past
+                  </span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column - About Text & Tabs */}
-          <div
-            className={`w-full lg:w-2/3 transition-all duration-1000 delay-500 ${
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 translate-x-10"
-            }`}
-          >
-            <div className="flex items-center mb-6">
-              <span
-                className="inline-block p-3 rounded-xl mr-4 border shadow-md"
-                style={{
-                  backgroundColor: getVar("card-border"),
-                  color: getVar("text-secondary"),
-                  borderColor: getVar("border-divider"),
-                }}
-              >
-                <Code size={24} className="text-blue-300" />{" "}
-              </span>
-              <h3
-                className="text-3xl md:text-4xl font-extrabold leading-tight"
-                style={{ color: getVar("text-primary") }}
-              >
-                Web{" "}
-                <span
-                  className="bg-clip-text text-transparent"
-                  style={{ color: getVar("button-secondary-text") }}
-                >
-                  Developer
-                </span>
-              </h3>
-            </div>
-
-            <p
-              className="text-lg mb-6 leading-relaxed max-w-full lg:max-w-none"
-              style={{ color: getVar("text-secondary") }}
-            >
-              Hi there! I&apos;m a passionate{" "}
-              <strong style={{ color: getVar("text-primary") }}>
-                web developer
-              </strong>{" "}
-              with a strong focus on creating intuitive and high-performance
-              websites. I specialize in building modern web applications using
-              cutting-edge technologies that are both{" "}
-              <strong style={{ color: getVar("text-primary") }}>
-                beautiful and scalable.
-              </strong>
-            </p>
-
-            <p
-              className="text-lg mb-8 leading-relaxed max-w-full lg:max-w-none"
-              style={{ color: getVar("text-secondary") }}
-            >
-              My journey in web development started when I was in college, and
-              since then, I&apos;ve worked on numerous projects ranging from
-              small business websites to complex web applications. I believe in
-              writing{" "}
-              <strong style={{ color: getVar("text-primary") }}>
-                clean, maintainable code
-              </strong>{" "}
-              and crafting user experiences that are both{" "}
-              <strong style={{ color: getVar("text-primary") }}>
-                aesthetically pleasing and functional.
-              </strong>
-            </p>
-
-            {/* Tab Navigation */}
-            <div className="mb-8">
-              <div
-                className="flex p-1 rounded-xl mb-8 shadow-xl border max-w-full lg:max-w-xl mx-auto lg:mx-0"
-                style={{
-                  backgroundColor: getVar("card-border"),
-                  borderColor: getVar("border-divider"),
-                }}
-              >
-                <button
-                  className={`py-3 px-6 rounded-lg font-semibold text-base flex items-center justify-center flex-1 transition-all duration-300 transform hover:scale-105 cursor-pointer ${
-                    activeTab === "skills" ? "shadow-lg" : ""
-                  }`}
-                  style={{
-                    background:
-                      activeTab === "skills"
-                        ? getVar("button-primary-bg")
-                        : "transparent",
-                    color:
-                      activeTab === "skills"
-                        ? "white"
-                        : getVar("text-secondary"),
-                  }}
-                  onClick={() => setActiveTab("skills")}
-                >
-                  <Code size={18} className="mr-2" />
-                  My Skills
-                </button>
-                <button
-                  className={`py-3 px-6 rounded-lg font-semibold text-base flex items-center justify-center flex-1 transition-all duration-300 transform hover:scale-105 cursor-pointer ${
-                    activeTab === "education" ? "shadow-lg" : ""
-                  }`}
-                  style={{
-                    background:
-                      activeTab === "education"
-                        ? getVar("button-primary-bg")
-                        : "transparent",
-                    color:
-                      activeTab === "education"
-                        ? "white"
-                        : getVar("text-secondary"),
-                  }}
-                  onClick={() => setActiveTab("education")}
-                >
-                  <GraduationCap size={18} className="mr-2" />
-                  Education
-                </button>
+          {/* Right Column: Visuals & Stack (5 columns) */}
+          <div className="lg:col-span-5 lg:mt-32 relative flex flex-col">
+            {/* Image */}
+            <div className="relative w-full max-w-sm mx-auto lg:ml-auto aspect-square mb-12">
+              <div className="absolute -inset-3 bg-neutral-200/50 dark:bg-neutral-800/30 rounded-2xl rotate-3" />
+              <div className="absolute inset-0 rounded-xl overflow-hidden -rotate-1 border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 z-10 shadow-lg">
+                <Image
+                  src="/images/personal/about.webp"
+                  alt="Ariq Farhan working"
+                  fill
+                  className="object-cover object-center grayscale-[0.5] hover:grayscale-0 transition-all duration-700 scale-105 hover:scale-100"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
               </div>
 
-              <div className="py-4">
-                {/* Skills Tab Content */}
-                {activeTab === "skills" && (
-                  <div className="animate-fadeIn transition-opacity duration-500 delay-200">
-                    {Object.keys(skillCategories).map((category) => (
-                      <div
-                        key={category}
-                        className="mb-8 p-4 rounded-lg border shadow-lg"
-                        style={{
-                          backgroundColor: getVar("card-bg"),
-                          borderColor: getVar("border-divider"),
-                        }}
-                      >
-                        <div className="flex items-center mb-4">
-                          <span
-                            className="mr-3 text-2xl"
-                            style={{ color: getVar("button-secondary-text") }}
-                          >
-                            {
-                              skillCategories[
-                                category as keyof typeof skillCategories
-                              ].icon
-                            }
-                          </span>
-                          <h4
-                            className="text-xl font-bold"
-                            style={{ color: getVar("text-primary") }}
-                          >
-                            {
-                              skillCategories[
-                                category as keyof typeof skillCategories
-                              ].name
-                            }
-                          </h4>
-                        </div>
-                        <div className="flex flex-wrap gap-3">
-                          {skills
-                            .filter((skill) => skill.category === category)
-                            .map((skill: Skill, index) => (
-                              <span
-                                key={index}
-                                className="px-4 py-2 rounded-full text-base font-medium border shadow-sm transition-all duration-300 transform hover:scale-105 flex items-center" // Tambahkan flex items-center
-                                style={{
-                                  backgroundColor: getVar("card-border"),
-                                  color: getVar("text-primary"),
-                                  borderColor: getVar("border-divider"),
-                                }}
-                              >
-                                <skill.icon
-                                  className="mr-2"
-                                  size={20}
-                                  color={skill.color}
-                                />{" "}
-                                {skill.name}
-                              </span>
-                            ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {/* Education Tab Content */}
-                {activeTab === "education" && (
-                  <div className="space-y-10 animate-fadeIn transition-opacity duration-500 delay-200">
-                    {education.map((edu: Education, index) => (
-                      <div
-                        key={index}
-                        className="relative pl-8 md:pl-10 pb-10 last:pb-0 group"
-                      >
-                        <div
-                          className="absolute left-0 top-0 w-5 h-5 rounded-full border-2 shadow-lg z-10 transform group-hover:scale-125 transition-transform duration-300"
-                          style={{
-                            background: getVar("button-primary-bg"),
-                            borderColor: getVar("background"),
-                          }}
-                        ></div>
-                        {index < education.length - 1 && (
-                          <div
-                            className="absolute left-2 top-0 bottom-0 w-0.5 ml-0.5"
-                            style={{
-                              backgroundColor: getVar("border-divider"),
-                            }}
-                          ></div>
-                        )}
+              {/* Decorative Element */}
+              <div className="absolute -bottom-5 -right-5 z-20 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 w-16 h-16 rounded-full flex items-center justify-center shadow-lg transform rotate-12">
+                <Code2 className="w-6 h-6 text-neutral-400" />
+              </div>
+            </div>
 
-                        {/* Education Card */}
-                        <div
-                          className="p-6 md:p-8 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300 border relative z-10 transform group-hover:translate-y-[-5px] transition-transform duration-300 ease-out"
-                          style={{
-                            backgroundColor: getVar("card-bg"),
-                            borderColor: getVar("border-divider"),
-                          }}
-                        >
-                          <div className="flex items-center mb-3">
-                            <Calendar
-                              size={18}
-                              className="mr-2"
-                              style={{ color: getVar("text-secondary") }}
-                            />
-                            <span
-                              className="px-3 py-1 rounded-full text-xs font-medium border shadow-inner"
-                              style={{
-                                backgroundColor: getVar("card-border"),
-                                color: getVar("text-secondary"),
-                                borderColor: getVar("border-divider"),
-                              }}
-                            >
-                              {edu.period}
-                            </span>
-                          </div>
+            {/* Asymmetric Skill Tags with Real Icons */}
+            <div className="w-full max-w-sm mx-auto lg:ml-auto pl-4">
+              <div className="flex items-center space-x-2 mb-6">
+                <Database className="w-4 h-4 text-neutral-400" />
+                <h4 className="text-sm font-semibold uppercase tracking-wider text-neutral-900 dark:text-neutral-100">
+                  Core Stack
+                </h4>
+              </div>
 
-                          <h4
-                            className="text-xl md:text-2xl font-extrabold mb-2"
-                            style={{ color: getVar("text-primary") }}
-                          >
-                            {edu.degree}
-                          </h4>
-                          <p
-                            className="font-semibold mb-4 text-base md:text-lg"
-                            style={{
-                              color: getVar("button-secondary-text-alt"),
-                            }}
-                          >
-                            {edu.institution}
-                          </p>
-                          <p
-                            className="mb-4 text-base md:text-lg leading-relaxed"
-                            style={{ color: getVar("text-secondary") }}
-                          >
-                            {edu.description}
-                          </p>
+              <div className="flex flex-wrap gap-3">
+                {topSkills.map((skill, index) => {
+                  const Icon = skill.icon;
+                  return (
+                    <div
+                      key={index}
+                      className="group flex items-center px-4 py-2 text-sm font-medium rounded-full border border-neutral-200 dark:border-neutral-800 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm text-neutral-700 dark:text-neutral-300 hover:-translate-y-1 hover:border-neutral-400 dark:hover:border-neutral-500 transition-all duration-300 cursor-default shadow-sm"
+                    >
+                      {/* React Icon embedded with its brand color */}
+                      <Icon
+                        className="w-4 h-4 mr-2 transition-transform duration-300 group-hover:scale-110"
+                        style={{ color: skill.color }}
+                      />
+                      {skill.name}
+                    </div>
+                  );
+                })}
 
-                          <div className="space-y-3">
-                            {edu.achievements.map((achievement, i) => (
-                              <div key={i} className="flex items-start">
-                                <ChevronRight
-                                  size={18}
-                                  className="mt-1 mr-2 flex-shrink-0"
-                                  style={{
-                                    color: getVar("button-secondary-text-alt"),
-                                  }}
-                                />
-                                <p
-                                  className="text-base"
-                                  style={{ color: getVar("text-secondary") }}
-                                >
-                                  {achievement}
-                                </p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                {/* Subtle link to full stack details */}
+                <a
+                  href="#projects" // Ubah ke halaman spesifik jika ada (misal: /stack)
+                  className="px-4 py-2 text-sm font-medium rounded-full flex items-center text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                >
+                  View full stack <ArrowUpRight className="ml-1 w-3 h-3" />
+                </a>
               </div>
             </div>
           </div>

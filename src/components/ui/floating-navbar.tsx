@@ -75,7 +75,7 @@ export function FloatingNavbar({
         "before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-blue-500/5 before:to-purple-500/5 before:opacity-0 before:transition-opacity before:duration-300",
         "hover:before:opacity-100",
 
-        className
+        className,
       )}
       {...props}
     >

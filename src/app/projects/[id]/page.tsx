@@ -7,7 +7,6 @@ import Footer from "@/static/Footer/Footer";
 interface ProjectPageParams {
   id: string;
 }
-
 export async function generateStaticParams() {
   return projects.map((project) => ({
     id: project.id,
@@ -26,20 +25,14 @@ export default async function ProjectDetailPage({
     notFound();
   }
 
-  const getVar = (varName: string) => `var(--${varName})`;
-
   return (
-    <div
-      className="flex flex-col min-h-screen"
-      style={{
-        backgroundColor: getVar("background"),
-        color: getVar("foreground"),
-      }}
-    >
+    <div className="flex flex-col min-h-screen bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50 selection:bg-neutral-200 dark:selection:bg-neutral-800 selection:text-neutral-900 dark:selection:text-white">
       <Navbar />
-      <main className="flex-grow pt-16 md:pt-24 lg:pt-28">
+
+      <main className="flex-grow flex flex-col">
         <ProjectDetail project={project} />
       </main>
+
       <Footer />
     </div>
   );
