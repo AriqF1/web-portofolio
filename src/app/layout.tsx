@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/context/ThemeContext";
 import Script from "next/script";
 
 const geistSans = Geist({
@@ -91,7 +90,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
         />
 
-        <ThemeProvider>{children}</ThemeProvider>
+        {children}
       </body>
     </html>
   );
