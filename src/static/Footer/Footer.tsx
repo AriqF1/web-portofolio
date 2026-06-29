@@ -100,7 +100,7 @@ const Footer = () => {
                 <ArrowUpRight className="ml-1 w-3 h-3 opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all" />
               </a>
               <a
-                href="https://instagram.com/farhanariq_"
+                href="https://instagram.com/frhnariq_"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors flex items-center group w-fit"
