@@ -1,12 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { Sun, Moon, ArrowDownToLine } from "lucide-react";
-import { useTheme } from "@/context/ThemeContext";
+import { ArrowDownToLine } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const Navbar = () => {
-  const { theme, toggleTheme } = useTheme();
   const [activeSection, setActiveSection] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
 

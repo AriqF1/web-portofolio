@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Github, Linkedin, Instagram, Mail } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -22,7 +22,7 @@ const Footer = () => {
         {/* Top Half: Massive Typographic CTA */}
         <div className="mb-32 flex flex-col items-start">
           <h2 className="text-5xl md:text-7xl lg:text-[7rem] font-bold leading-[0.9] tracking-tighter mb-8">
-            Let's build <br className="hidden md:block" />
+            Let&apos;s build <br className="hidden md:block" />
             <span className="text-neutral-400 dark:text-neutral-600 font-light">
               something.
             </span>
