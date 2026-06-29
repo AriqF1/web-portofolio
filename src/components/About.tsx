@@ -45,17 +45,17 @@ const About = () => {
 
             <div className="space-y-6 text-base md:text-lg leading-8 text-neutral-600 dark:text-neutral-400 max-w-2xl">
               <p>
-                I'm Ariq Farhan, a Full Stack Developer with a strong focus on
-                Backend Development. I enjoy building secure, scalable, and
+                I&apos;m Ariq Farhan, a Full Stack Developer with a strong focus
+                on Backend Development. I enjoy building secure, scalable, and
                 maintainable web applications while creating modern, responsive,
                 and intuitive user interfaces.
               </p>
 
               <p>
                 Through academic projects, professional experience, and
-                continuous learning, I've developed applications ranging from
-                management systems to AI-powered platforms. One of my notable
-                projects is
+                continuous learning, I&apos;ve developed applications ranging
+                from management systems to AI-powered platforms. One of my
+                notable projects is
                 <strong> SIAPOL-JATENG</strong>, a web-based emergency reporting
                 system that integrates artificial intelligence for report
                 analysis and Telegram Bot for real-time officer notifications.
