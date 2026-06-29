@@ -31,7 +31,7 @@ const Hero = () => {
             <div className="flex items-center space-x-3">
               <div className="w-8 h-[1px] bg-neutral-900 dark:bg-neutral-50" />
               <p className="text-sm font-medium tracking-wider uppercase text-neutral-500 dark:text-neutral-400">
-                Portfolio '26
+                Portfolio
               </p>
             </div>
 
